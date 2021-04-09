@@ -129,7 +129,7 @@ void MainWindow::on_radioButton_clicked()
                         ui->tableView->show();
                         msgBox.setText("Tri avec succés.");
                         msgBox.exec();
-
+//ggggggg
         }
 }
 

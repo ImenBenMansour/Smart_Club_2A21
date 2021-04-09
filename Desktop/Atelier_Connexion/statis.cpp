@@ -40,8 +40,8 @@ void statis::make()
         q.first() ;
         total=(q.value(0).toInt());
 
-        femelle=(((double)femelle)*100/(double)total);
-        male=femelle-100;
+        femelle=((double)femelle/(double)total)*100;
+        male=100-femelle;
 
         Male= QString::number(male);
         Femelle=QString::number(femelle);
