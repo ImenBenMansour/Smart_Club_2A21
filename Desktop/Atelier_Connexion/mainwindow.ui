@@ -58,6 +58,10 @@
           <height>581</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(85, 170, 255);
+background-color: rgb(170, 255, 255);</string>
+        </property>
         <property name="title">
          <string>Ajout</string>
         </property>
@@ -69,6 +73,10 @@
            <width>171</width>
            <height>31</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(170, 170, 127);
+background-color: rgb(216, 193, 255);</string>
          </property>
          <property name="placeholderText">
           <string>Id</string>
@@ -83,6 +91,9 @@
            <height>31</height>
           </rect>
          </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(216, 193, 255);</string>
+         </property>
          <property name="placeholderText">
           <string>Nom</string>
          </property>
@@ -95,6 +106,10 @@
            <width>171</width>
            <height>31</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(216, 193, 255);
+</string>
          </property>
          <property name="placeholderText">
           <string>Prenom</string>
@@ -109,6 +124,9 @@
            <height>31</height>
           </rect>
          </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>Ajouter</string>
          </property>
@@ -122,6 +140,9 @@
            <height>31</height>
           </rect>
          </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(216, 193, 255);</string>
+         </property>
          <property name="placeholderText">
           <string>Payement</string>
          </property>
@@ -134,6 +155,9 @@
            <width>171</width>
            <height>31</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(216, 193, 255);</string>
          </property>
          <property name="placeholderText">
           <string>Nbr_Chats</string>
@@ -157,12 +181,12 @@
           <rect>
            <x>230</x>
            <y>100</y>
-           <width>81</width>
+           <width>131</width>
            <height>41</height>
           </rect>
          </property>
          <property name="text">
-          <string>Tri</string>
+          <string>      Trier par:</string>
          </property>
         </widget>
         <widget class="QTableView" name="tableView">
@@ -276,11 +300,15 @@
         <widget class="QLabel" name="label_2">
          <property name="geometry">
           <rect>
-           <x>30</x>
+           <x>20</x>
            <y>350</y>
            <width>56</width>
            <height>16</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(85, 0, 127);
+background-color: rgb(255, 255, 255);</string>
          </property>
          <property name="text">
           <string>Sexe   :</string>

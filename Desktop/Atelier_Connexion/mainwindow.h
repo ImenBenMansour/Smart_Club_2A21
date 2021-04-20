@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include "abonne.h"
 #include "abonnement.h"
+#include "statis.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -57,6 +59,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
    Abonne a;
    Abonnement b;
 };
