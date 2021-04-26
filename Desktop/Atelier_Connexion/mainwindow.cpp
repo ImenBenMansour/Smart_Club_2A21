@@ -24,6 +24,16 @@ MainWindow::MainWindow(QWidget *parent) :
   ui->le_id->setValidator(new QIntValidator(100, 9999999, this));
   ui->tab_etudiant->setModel(a.afficher());
   ui->tab_etudiant_2->setModel(b.afficher());
+
+  ui->le_nom->setValidator(new QRegExpValidator(QRegExp("[A-Za-z]+")));
+  ui->le_prenom->setValidator(new QRegExpValidator(QRegExp("[A-Za-z]+")));
+  ui->le_payement->setValidator(new QIntValidator(100, 9999999, this));
+  ui->le_nbr_chats->setValidator(new QIntValidator(100, 9999999, this));
+  ui->le_id_2->setValidator(new QIntValidator(100, 9999999, this));
+  ui->le_id_sup->setValidator(new QIntValidator(100, 9999999, this));
+  ui->le_id_sup_2->setValidator(new QIntValidator(100, 9999999, this));
+
+
 }
 
 MainWindow::~MainWindow()
@@ -322,3 +332,46 @@ void MainWindow::on_le_stat_clicked()
     w->make();
     w->show();
 }
+
+/*void MainWindow::on_le_id_textChanged(const QString &arg1)
+{
+    QSqlQueryModel *model= new QSqlQueryModel();
+        QSqlQuery   *query= new QSqlQuery();
+        query->prepare("SELECT * FROM etudiant  WHERE ID-AB LIKE'"+arg1+"%' or NOM  LIKE'"+arg1+"%' or PRENOM LIKE'"+arg1+"%' or PAYEMENT '"+arg1+"%'or NBR_CHATS '"+arg1+"%'or SEXE '"+arg1+"%' ");
+         query->exec();
+         if (query->next()) { }
+         else {
+             QMessageBox::critical(nullptr, QObject::tr("SEARCH"),
+                             QObject::tr("NO MATCH FOUND !.\n"
+                                         "Click Cancel to exit."), QMessageBox::Cancel);
+             ui->le_id->clear();}
+}
+
+void MainWindow::on_le_id_sup_textChanged(const QString &arg1)
+{
+    QSqlQueryModel *model= new QSqlQueryModel();
+        QSqlQuery   *query= new QSqlQuery();
+        query->prepare("SELECT * FROM etudiant  WHERE ID-AB LIKE'"+arg1+"%' or NOM  LIKE'"+arg1+"%' or PRENOM LIKE'"+arg1+"%' or PAYEMENT '"+arg1+"%'or NBR_CHATS '"+arg1+"%'or SEXE '"+arg1+"%' ");
+         query->exec();
+         if (query->next()) { }
+         else {
+             QMessageBox::critical(nullptr, QObject::tr("SEARCH"),
+                             QObject::tr("NO MATCH FOUND !.\n"
+                                         "Click Cancel to exit."), QMessageBox::Cancel);
+             ui->le_id_sup->clear();}
+}
+
+void MainWindow::on_le_id_sup_2_textChanged(const QString &arg1)
+{
+    QSqlQueryModel *model= new QSqlQueryModel();
+        QSqlQuery   *query= new QSqlQuery();
+        query->prepare("SELECT * FROM   abonnement WHERE ID  LIKE'"+arg1+"%' or DATE_DEB  LIKE'"+arg1+"%' or DATE_FIN' ");
+         query->exec();
+         if (query->next()) { }
+         else {
+             QMessageBox::critical(nullptr, QObject::tr("SEARCH"),
+                             QObject::tr("NO MATCH FOUND !.\n"
+                                         "Click Cancel to exit."), QMessageBox::Cancel);
+             ui->le_id_sup_2->clear();}
+
+}*/

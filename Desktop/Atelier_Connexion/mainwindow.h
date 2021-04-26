@@ -57,6 +57,12 @@ private slots:
 
     void on_le_stat_clicked();
 
+    void on_le_id_textChanged(const QString &arg1);
+
+    void on_le_id_sup_textChanged(const QString &arg1);
+
+    void on_le_id_sup_2_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
 
