@@ -51,6 +51,13 @@ void MainWindow::on_pb_ajouter_clicked()
     int nbr_chats=ui->le_nbr_chats->text().toInt();
      QString sexe=ui->le_sexe->currentText();
 
+         srand (time(NULL));
+         QDate d = QDate::currentDate() ;
+          QString datee =d.toString("dd / MM / yyyy ") ;
+          QString fn="ajouter" ;
+         QString nom1 = ui->le_nom->text();
+       projeth pp(nom1,datee,fn) ;
+       bool test1=pp.ajoutehis() ;
     Abonne a(id_ab,nom,prenom,payement,nbr_chats,sexe);
 
 
@@ -78,12 +85,25 @@ else{
 }
 
 void MainWindow::on_pb_supprimer_clicked()
-{ Abonne a1;a1.setid_ab(ui->le_id_sup->text().toInt());
+
+{Abonne a1;a1.setid_ab(ui->le_id_sup->text().toInt());
+
     bool test=a1.supprimer(a1.getid_ab());
+    srand (time(NULL));
+                              QDate d = QDate::currentDate() ;
+                               QString datee =d.toString("dd / MM / yyyy ") ;
+                               QString fn="supprimer" ;
+                              QString nom1 = ui->le_nom->text();
+                            projeth pp(nom1,datee,fn) ;
+                            bool test1=pp.modifierhis() ;
+
     QMessageBox msgBox;
     if(test)
        { msgBox.setText("Suppression avec succes.");
+
         ui->tab_etudiant->setModel(a.afficher());
+
+
 }
     else
         msgBox.setText("Echec de suppression");
@@ -102,7 +122,13 @@ void MainWindow::on_le_Modifier_clicked()
             QString sexe=ui->le_sexe->currentText();
 
                            Abonne a(id_ab,nom,prenom,payement,nbr_chats,sexe);
-
+                           srand (time(NULL));
+                                                     QDate d = QDate::currentDate() ;
+                                                      QString datee =d.toString("dd / MM / yyyy ") ;
+                                                      QString fn="modifier" ;
+                                                     QString nom1 = ui->le_nom->text();
+                                                   projeth pp(nom1,datee,fn) ;
+                                                   bool test1=pp.modifierhis() ;
 
                            ui->le_id->setText("");
 
@@ -200,6 +226,14 @@ if(test){
     ui->le_id_2->setText("");//bech ba3ed mankamel l ajout yarja3 a 0
 
     ui->tab_etudiant_2->setModel(b.afficher());//actualisation
+    QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                             notifyIcon->show();
+                             notifyIcon->setIcon(QIcon("icone.png"));
+
+                             notifyIcon->showMessage("GESTION ABONNEMENT   ","Abonnement Ajouté",QSystemTrayIcon::Information,15000);
+             QMessageBox::information(nullptr, QObject::tr("OK"),
+                         QObject::tr("Ajout effectué.\n"
+                                     "Click Cancel to exit."), QMessageBox::Cancel);
 
 
 }
@@ -221,6 +255,15 @@ void MainWindow::on_pb_supprimer_2_clicked()
         if(test)
            { msgBox.setText("Suppression avec succes.");
             ui->tab_etudiant_2->setModel(b.afficher());
+            QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                     notifyIcon->show();
+                                     notifyIcon->setIcon(QIcon("icone.png"));
+
+                                     notifyIcon->showMessage("GESTION ABONNEMENT   ","Abonnement supprimer",QSystemTrayIcon::Information,15000);
+                     QMessageBox::information(nullptr, QObject::tr("OK"),
+                                 QObject::tr("Ajout effectué.\n"
+                                             "Click Cancel to exit."), QMessageBox::Cancel);
+
     }
         else
             msgBox.setText("Echec de suppression");
@@ -244,6 +287,14 @@ void MainWindow::on_le_modifier_2_clicked()
 
                 {
                      ui->tab_etudiant_2->setModel(b.afficher());
+                     QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                              notifyIcon->show();
+                                              notifyIcon->setIcon(QIcon("icone.png"));
+
+                                              notifyIcon->showMessage("GESTION ABONNEMENT  ","Abonnement Modifier",QSystemTrayIcon::Information,15000);
+                              QMessageBox::information(nullptr, QObject::tr("OK"),
+                                          QObject::tr("Ajout effectué.\n"
+                                                      "Click Cancel to exit."), QMessageBox::Cancel);
                     QMessageBox::information(nullptr, QObject::tr("update "),
                                 QObject::tr("Participant modifie\n"
                 "Click Cancel to exit."), QMessageBox::Cancel);}
@@ -375,3 +426,12 @@ void MainWindow::on_le_id_sup_2_textChanged(const QString &arg1)
              ui->le_id_sup_2->clear();}
 
 }*/
+
+void MainWindow::on_pushButton_clicked()
+{
+
+
+        ui->tabhis->setModel(tmph.afficherhis()) ;
+        ui->tabhis->setModel(tmph.afficherhis());//refresh
+
+}

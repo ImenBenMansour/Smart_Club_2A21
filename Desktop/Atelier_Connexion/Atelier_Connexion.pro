@@ -27,6 +27,7 @@ CONFIG += c++11
 SOURCES += \
     abonne.cpp \
     abonnement.cpp \
+    arduino.cpp \
         main.cpp \
         mainwindow.cpp \
     connection.cpp \
@@ -35,6 +36,7 @@ SOURCES += \
 HEADERS += \
     abonne.h \
     abonnement.h \
+    arduino.h \
         mainwindow.h \
     connection.h \
     statis.h

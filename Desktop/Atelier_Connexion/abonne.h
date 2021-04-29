@@ -33,5 +33,19 @@ public:
         int id_ab,payement,nbr_chats;
         QString nom,prenom,sexe;
 };
+class projeth
+{
+public:
+       projeth() ;
+       projeth(QString,QString,QString) ;
+       QString get_nom();
+       QString get_datee();
+       QString get_fn();
+       QSqlQueryModel * afficherhis() ;
+       bool ajoutehis();
+       bool modifierhis() ;
+private:
 
+    QString nom,datee,fn ;
+};
 #endif // ETUDIANT_H

@@ -91,8 +91,52 @@ QSqlQueryModel* Abonne::rechercher (const QString &aux)
     model->setHeaderData(5, Qt::Horizontal, QObject::tr("sexe"));
 
     return model;
-}
 
+}
+projeth::projeth()
+{
+nom="";
+datee="";
+fn="";
+}
+projeth::projeth(QString nom,QString datee,QString fn)
+{
+    this->nom=nom;
+    this->datee=datee;
+    this->fn=fn ;
+}
+QString projeth::get_datee(){return  datee;}
+QString projeth::get_fn(){return  fn;}
+QString projeth::get_nom(){return  nom;}
+bool projeth::ajoutehis()
+{
+    QSqlQuery query;
+    query.prepare("INSERT INTO historique (NOM, DATEE, FN) "
+                  "VALUES (:nom, :datee, :fn)");
+    query.bindValue(":nom", nom);
+    query.bindValue(":datee", datee);
+    query.bindValue(":fn", fn);
+    return    query.exec();
+}
+bool projeth::modifierhis()
+{
+    QSqlQuery query;
+    query.prepare("UPDATE historique SET datee='"+datee+"',fn='"+fn+"' where nom='"+nom+"'  ;");
+    query.bindValue(":nom",nom);
+    query.bindValue(":datee", datee);
+    query.bindValue(":fn", fn);
+    return    query.exec();
+}
+QSqlQueryModel * projeth::afficherhis()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+    model->setQuery("select * from historique");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("NOM"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("date "));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("fonction "));
+        return model;
+
+}
 
 
 

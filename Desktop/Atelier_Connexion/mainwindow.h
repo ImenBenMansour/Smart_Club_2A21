@@ -68,6 +68,7 @@ private:
 
    Abonne a;
    Abonnement b;
+    projeth tmph;
 };
 
 #endif // MAINWINDOW_H
