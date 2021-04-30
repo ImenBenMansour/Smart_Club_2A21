@@ -74,6 +74,14 @@ if(test){
      ui->le_sexe->setCurrentText("");
 
     ui->tab_etudiant->setModel(a.afficher());//actualisation
+    QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                             notifyIcon->show();
+                             notifyIcon->setIcon(QIcon("icone.png"));
+
+                             notifyIcon->showMessage("GESTION ABONNE   ","Abonne Ajouté",QSystemTrayIcon::Information,15000);
+             QMessageBox::information(nullptr, QObject::tr("OK"),
+                         QObject::tr("Ajout effectué.\n"
+                                     "Click Cancel to exit."), QMessageBox::Cancel);
 
 
 }
@@ -102,6 +110,14 @@ void MainWindow::on_pb_supprimer_clicked()
        { msgBox.setText("Suppression avec succes.");
 
         ui->tab_etudiant->setModel(a.afficher());
+        QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                 notifyIcon->show();
+                                 notifyIcon->setIcon(QIcon("icone.png"));
+
+                                 notifyIcon->showMessage("GESTION ABONNE   ","Abonne supprimer",QSystemTrayIcon::Information,15000);
+                 QMessageBox::information(nullptr, QObject::tr("OK"),
+                             QObject::tr("suppression effectué.\n"
+                                         "Click Cancel to exit."), QMessageBox::Cancel);
 
 
 }
@@ -141,6 +157,14 @@ void MainWindow::on_le_Modifier_clicked()
 
                 {
                      ui->tab_etudiant->setModel(a.afficher());
+                     QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                              notifyIcon->show();
+                                              notifyIcon->setIcon(QIcon("icone.png"));
+
+                                              notifyIcon->showMessage("GESTION ABONNE  ","Abonne Modifier",QSystemTrayIcon::Information,15000);
+                              QMessageBox::information(nullptr, QObject::tr("OK"),
+                                          QObject::tr("Modification effectué.\n"
+                                                      "Click Cancel to exit."), QMessageBox::Cancel);
                     QMessageBox::information(nullptr, QObject::tr("update "),
                                 QObject::tr("Abonne modifie\n"
                 "Click Cancel to exit."), QMessageBox::Cancel);}
@@ -261,7 +285,7 @@ void MainWindow::on_pb_supprimer_2_clicked()
 
                                      notifyIcon->showMessage("GESTION ABONNEMENT   ","Abonnement supprimer",QSystemTrayIcon::Information,15000);
                      QMessageBox::information(nullptr, QObject::tr("OK"),
-                                 QObject::tr("Ajout effectué.\n"
+                                 QObject::tr("suppression effectué.\n"
                                              "Click Cancel to exit."), QMessageBox::Cancel);
 
     }
@@ -293,7 +317,7 @@ void MainWindow::on_le_modifier_2_clicked()
 
                                               notifyIcon->showMessage("GESTION ABONNEMENT  ","Abonnement Modifier",QSystemTrayIcon::Information,15000);
                               QMessageBox::information(nullptr, QObject::tr("OK"),
-                                          QObject::tr("Ajout effectué.\n"
+                                          QObject::tr("Modification effectué.\n"
                                                       "Click Cancel to exit."), QMessageBox::Cancel);
                     QMessageBox::information(nullptr, QObject::tr("update "),
                                 QObject::tr("Participant modifie\n"
