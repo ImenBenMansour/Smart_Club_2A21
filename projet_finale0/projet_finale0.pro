@@ -18,6 +18,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    abonne.cpp \
+    abonnement.cpp \
     animal.cpp \
     board_widget.cpp \
     connexion.cpp \
@@ -38,9 +40,12 @@ SOURCES += \
     stat.cpp \
     stati.cpp \
     statis.cpp \
+    statis1.cpp \
     widget.cpp
 
 HEADERS += \
+    abonne.h \
+    abonnement.h \
     animal.h \
     board_widget.h \
     connexion.h \
@@ -60,6 +65,7 @@ HEADERS += \
     stat.h \
     stati.h \
     statis.h \
+    statis1.h \
     widget.h
 
 FORMS += \
@@ -68,6 +74,7 @@ FORMS += \
     stat.ui \
     stati.ui \
     statis.ui \
+    statis1.ui \
     widget.ui
 
 # Default rules for deployment.

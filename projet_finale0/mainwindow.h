@@ -11,6 +11,9 @@
 #include"animal.h"
 #include"nourriture.h"
 #include"excel.h"
+#include"abonne.h"
+#include"abonnement.h"
+#include"statis1.h"
 
 //#include "chat.h"
 #include <QMainWindow>
@@ -23,8 +26,15 @@
 #include <QPrinter>
 #include <QPrintDialog>
 
+
+#include <QMediaPlayer>
+#include <QSystemTrayIcon>
+#include <QFuture>
+#include <QSound>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
+
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -187,9 +197,6 @@ void sendMail();
 void mailSent(QString);
 void browse();
 
-void on_vers_ayou_clicked();
-
-void on_vers_cycy_clicked();
 
 void on_pb_ajouter_clicked();
 
@@ -252,6 +259,97 @@ void on_eya_clicked();
 
 void on_cynda_clicked();
 
+void on_checkBox_RefE_stateChanged(int arg1);
+
+//sidhom
+
+
+
+
+void on_le_Modifier_clicked();
+
+
+
+void on_radioButton_3_clicked();
+
+// void on_le_id_cursorPositionChanged(int arg1, int arg2);
+
+
+
+void on_le_modifier_2_clicked();
+
+void on_le_recherche_abonne_textChanged(const QString &arg1);
+
+void on_pb_recherche_abonne_clicked();
+
+void on_combo_client_activated(const QString &arg1);
+
+
+
+void on_pushButton_pdf_clicked();
+
+void on_le_stat_clicked();
+
+void on_le_id_textChanged(const QString &arg1);
+
+void on_le_id_sup_textChanged(const QString &arg1);
+
+void on_le_id_sup_2_textChanged(const QString &arg1);
+
+
+void on_pb_ajouter_3_clicked();
+
+
+
+void on_radioButton_10_clicked();
+
+void on_radioButton_11_clicked();
+
+void on_pb_supprimer_3_clicked();
+
+void on_pushButton_32_clicked();
+
+void on_pb_ajouter_4_clicked();
+
+void on_pb_supprimer_4_clicked();
+
+void on_youssef_clicked();
+
+void on_radioButton_12_clicked();
+
+void on_logout_button_clicked();
+
+void on_mdp_oublie_label_linkActivated(const QString &link);
+
+void on_radioButton_jour_toggled(bool checked);
+
+void on_radioButton_nuit_toggled(bool checked);
+
+void on_confirmer_langue_clicked();
+
+
+
+//son config mimi
+void on_ouvrir_media_clicked();
+void on_play_media_clicked();
+void on_pause_media_clicked();
+
+void on_stop_media_clicked();
+
+void on_mute_media_clicked();
+
+void on_volume_media_valueChanged(int value);
+
+void on_annuler_chan_mdp_clicked();
+
+void on_confirmer_chan_mdp_clicked();
+
+void on_ajouter_image_clicked();
+
+void on_cant_touch_this_pressed();
+
+void on_configuration_clicked();
+
 private:
     Ui::MainWindow *ui;
     personnel tmppersonnel;
@@ -270,6 +368,12 @@ private:
     Nourriture N_temp;
 
 
+    Abonne a;
+    Abonnement b;
+     projeth tmph;
+
+     QTranslator *translator=new QTranslator;
+
     login *log;
     QString current_user;
     QString myid="";
@@ -283,5 +387,15 @@ private:
     int center_main_y=0;
     int center_login_x=0;
     int center_login_y=0;
+
+
+
+
+    QMediaPlayer *player;
+
+    QSystemTrayIcon *mSystemTrayIcon;
+    QMediaPlayer *mMediaPlayer;
+    QSound *son;
+    QMediaPlayer musicAdd;
 };
 #endif // MAINWINDOW_H

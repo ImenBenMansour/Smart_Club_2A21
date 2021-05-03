@@ -6,6 +6,7 @@
 #include "stati.h"
 #include "statis.h"
 #include "stat.h"
+#include"statis1.h"
 #include "smtp.h"
 #include <QFile>
 #include<QMainWindow>
@@ -53,6 +54,23 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->lineEdit_reference->setStyleSheet("QLineEdit { color: red;}");
 
+    //windows size
+    initial_width=this->width()*0.8;
+    initial_height=this->height();
+
+    login_width=this->width()*0.5;
+    login_height=this->height()*0.7;
+
+    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+    center_main_x=(screenGeometry.width()-initial_width) / 2;
+    center_main_y=(screenGeometry.height()-initial_height) / 2;
+    center_login_x=(screenGeometry.width()-login_width) / 2;
+    center_login_y=(screenGeometry.height()-login_height) / 2;
+
+
+
+    this->setFixedSize(login_width,login_height);
+
 //maryem
 
     this->setStyleSheet("background-color: rgb(157,0,79);");
@@ -89,6 +107,9 @@ MainWindow::MainWindow(QWidget *parent)
      ui->passwordLineEdit_login->setEchoMode(QLineEdit::Password);
      ui->passwordLineEdit_signup->setEchoMode(QLineEdit::Password);
      ui->confimerMotDePasseLineEdit_signup->setEchoMode(QLineEdit::Password);
+     //Forgotten password hyperlink
+     ui->mdp_oublie_label->setText(tr("<a href=\"whatever\">Mot de passe oublié?</a>"));
+     ui->mdp_oublie_label->setTextInteractionFlags(Qt::TextBrowserInteraction);
 
 //cynda et eya
      //for email tab
@@ -113,7 +134,19 @@ MainWindow::MainWindow(QWidget *parent)
      ui->stackedWidget_4->setCurrentIndex(0);
      ui->stackedWidget_2->setCurrentIndex(0);//redirection
 
+//sidhom
+     ui->le_id->setValidator(new QIntValidator(100, 9999999, this));
+     ui->tab_etudiant->setModel(a.afficher());
+     ui->tab_etudiant_2->setModel(b.afficher());
+     ui->tableView_7->setModel(a.afficher());
 
+     ui->le_nom->setValidator(new QRegExpValidator(QRegExp("[A-Za-z]+")));
+     ui->le_prenom->setValidator(new QRegExpValidator(QRegExp("[A-Za-z]+")));
+     ui->le_payement->setValidator(new QIntValidator(100, 9999999, this));
+     ui->le_nbr_chats->setValidator(new QIntValidator(100, 9999999, this));
+     ui->le_id_2->setValidator(new QIntValidator(100, 9999999, this));
+     ui->le_id_sup->setValidator(new QIntValidator(100, 9999999, this));
+     ui->le_id_sup_2->setValidator(new QIntValidator(100, 9999999, this));
 
 
 
@@ -426,9 +459,9 @@ void MainWindow::on_pushButton_6_clicked()
 {
     personnel p;
 
-          QString nom=ui->lineEdit->text();
-          QString prenom=ui->lineEdit_3->text();
-          QString mobile=ui->lineEdit_2->text();
+          QString nom=ui->lineEditnom->text();
+          QString prenom=ui->lineEditprenom->text();
+          QString mobile=ui->lineEditmobile->text();
         if(ui->checkBox->isChecked() && ui->checkBox_2->isChecked() && ui->checkBox_3->isChecked())
         {
 
@@ -848,19 +881,18 @@ void MainWindow::on_login_button_clicked()
             ui->stackedWidget->setCurrentIndex(1);
 
 
-
-            if (current_user=="sara")
-                ui->stackedWidget_2->setCurrentIndex(4);
-            else if (current_user=="dhia")
-                ui->stackedWidget_2->setCurrentIndex(0);
-            else if (current_user=="bikou")
+            if (current_user=="boutheina")
                 ui->stackedWidget_2->setCurrentIndex(1);
-            else if (current_user=="iheb")
+            else if (current_user=="maryem")
                 ui->stackedWidget_2->setCurrentIndex(2);
-            else if (current_user=="elaa")
+            else if (current_user=="eya")
                 ui->stackedWidget_2->setCurrentIndex(3);
+            else if (current_user=="cynda")
+                ui->stackedWidget_2->setCurrentIndex(4);
+            else if (current_user=="youssef")
+                ui->stackedWidget_2->setCurrentIndex(5);
             else
-                ui->stackedWidget->setCurrentIndex(3);
+                ui->stackedWidget->setCurrentIndex(0);
 
 
             ui->usernameLineEdit_login->clear();
@@ -892,16 +924,16 @@ void MainWindow::on_login_button_clicked()
 
 
 
-            if (current_user=="sara")
-                ui->stackedWidget_2->setCurrentIndex(4);
-            else if (current_user=="dhia")
-                ui->stackedWidget_2->setCurrentIndex(0);
-            else if (current_user=="bikou")
+            if (current_user=="boutheina")
                 ui->stackedWidget_2->setCurrentIndex(1);
-            else if (current_user=="iheb")
+            else if (current_user=="maryem")
                 ui->stackedWidget_2->setCurrentIndex(2);
-            else if (current_user=="elaa")
+            else if (current_user=="eya")
                 ui->stackedWidget_2->setCurrentIndex(3);
+            else if (current_user=="cynda")
+                ui->stackedWidget_2->setCurrentIndex(4);
+            else if (current_user=="youssef")
+                ui->stackedWidget_2->setCurrentIndex(5);
             else
                 ui->stackedWidget->setCurrentIndex(3);
             ui->usernameLineEdit_login->clear();
@@ -1271,7 +1303,7 @@ void MainWindow::on_pushButton_25_clicked()
 {
     if (ui->checkBox_RefE->isChecked())
     {
-        int ref=ui->lineEdit_6->text().toInt();
+        int ref=ui->lineEdit_7->text().toInt();
         QSqlQueryModel *verif=E.rechercherref(ref);
         if (verif != nullptr)
         {
@@ -1657,7 +1689,7 @@ void MainWindow::on_reafficher_anim_clicked()
 
 void MainWindow::on_stat_clicked()
 {
-    statis *w = new statis();
+    statis1 *w = new statis1();
     w->make();
     w->show();
 }
@@ -1922,5 +1954,713 @@ void MainWindow::on_eya_clicked()
 void MainWindow::on_cynda_clicked()
 {
     ui->stackedWidget_2->setCurrentIndex(4);
+
+}
+
+//sidhom
+
+void MainWindow::on_pb_ajouter_3_clicked()
+{
+    int id_ab=ui->le_id->text().toInt();
+    QString nom=ui->le_nom->text();
+    QString prenom=ui->le_prenom->text();
+    int payement=ui->le_payement->text().toInt();
+    int nbr_chats=ui->le_nbr_chats->text().toInt();
+     QString sexe=ui->le_sexe->currentText();
+
+         srand (time(NULL));
+         QDate d = QDate::currentDate() ;
+          QString datee =d.toString("dd / MM / yyyy ") ;
+          QString fn="ajouter" ;
+         QString nom1 = ui->le_nom->text();
+       projeth pp(nom1,datee,fn) ;
+      bool test1=pp.ajoutehis() ;
+    Abonne a(id_ab,nom,prenom,payement,nbr_chats,sexe);
+
+
+
+
+bool test=a.ajouter();
+if(test){
+    QMessageBox::information(nullptr,QObject::tr("Abonne"),QObject::tr("abonne ajouté\n" "click ok to exit"),QMessageBox::Ok);
+    ui->le_id->setText("");//bech ba3ed mankamel l ajout yarja3 a 0
+    ui->le_nom->setText("");
+    ui->le_prenom->setText("");
+    ui->le_payement->setText("");
+    ui->le_nbr_chats->setText("");
+     ui->le_sexe->setCurrentText("");
+
+    ui->tab_etudiant->setModel(a.afficher());//actualisation
+    QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                             notifyIcon->show();
+                             notifyIcon->setIcon(QIcon("icone.png"));
+
+                             notifyIcon->showMessage("GESTION ABONNE   ","Abonne Ajouté",QSystemTrayIcon::Information,15000);
+             QMessageBox::information(nullptr, QObject::tr("OK"),
+                         QObject::tr("Ajout effectué.\n"
+                                     "Click Cancel to exit."), QMessageBox::Cancel);
+
+
+}
+else{
+    QMessageBox::critical(nullptr,QObject::tr("Abonne"),QObject::tr("Erreur!\n" "click ok to exit"),QMessageBox::Ok);
+}
+
+
+}
+
+void MainWindow::on_le_Modifier_clicked()
+{
+            int id_ab= ui->le_id->text().toInt();
+            QString nom=ui->le_nom->text();
+            QString prenom=ui->le_prenom->text();
+            int payement=ui->le_payement->text().toInt();
+            int nbr_chats= ui->le_nbr_chats->text().toInt();
+            QString sexe=ui->le_sexe->currentText();
+
+                           Abonne a(id_ab,nom,prenom,payement,nbr_chats,sexe);
+                           srand (time(NULL));
+                                                     QDate d = QDate::currentDate() ;
+                                                      QString datee =d.toString("dd / MM / yyyy ") ;
+                                                      QString fn="modifier" ;
+                                                     QString nom1 = ui->le_nom->text();
+                                                   projeth pp(nom1,datee,fn) ;
+                                                   bool test1=pp.modifierhis() ;
+
+                           ui->le_id->setText("");
+
+
+
+                bool test = a.update(id_ab,nom,prenom,payement,nbr_chats,sexe);
+
+
+                if(test)
+
+                {
+                     ui->tab_etudiant->setModel(a.afficher());
+                     QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                              notifyIcon->show();
+                                              notifyIcon->setIcon(QIcon("icone.png"));
+
+                                              notifyIcon->showMessage("GESTION ABONNE  ","Abonne Modifier",QSystemTrayIcon::Information,15000);
+                              QMessageBox::information(nullptr, QObject::tr("OK"),
+                                          QObject::tr("Modification effectué.\n"
+                                                      "Click Cancel to exit."), QMessageBox::Cancel);
+                    QMessageBox::information(nullptr, QObject::tr("update "),
+                                QObject::tr("Abonne modifie\n"
+                "Click Cancel to exit."), QMessageBox::Cancel);}
+}
+
+
+
+
+void MainWindow::on_radioButton_10_clicked()
+{
+
+        {QMessageBox msgBox ;
+                QSqlQueryModel * model= new QSqlQueryModel();
+
+
+                   model->setQuery("select * from etudiant order by CAST(id_ab as INT) desc");
+
+                   model->setHeaderData(0, Qt::Horizontal, QObject::tr("id_ab"));
+                   model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+                   model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+                   model->setHeaderData(3, Qt::Horizontal, QObject::tr("payement"));
+                   model->setHeaderData(4, Qt::Horizontal, QObject::tr("nbr_chats"));
+                   model->setHeaderData(5, Qt::Horizontal, QObject::tr("sexe"));
+
+                            ui->tableView->setModel(model);
+                            ui->tableView->show();
+                            msgBox.setText("Tri avec succés.");
+                            msgBox.exec();
+    //ggggggg
+            }
+
+}
+
+void MainWindow::on_radioButton_11_clicked()
+{
+    QMessageBox msgBox ;
+        QSqlQueryModel * model= new QSqlQueryModel();
+
+
+
+           model->setQuery("select * from etudiant order by nom");
+
+           model->setHeaderData(0, Qt::Horizontal, QObject::tr("id_ab"));
+           model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+           model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+           model->setHeaderData(3, Qt::Horizontal, QObject::tr("payement"));
+           model->setHeaderData(4, Qt::Horizontal, QObject::tr("nbr_chats"));
+           model->setHeaderData(5, Qt::Horizontal, QObject::tr("sexe"));
+
+                    ui->tableView->setModel(model);
+                    ui->tableView->show();
+                    msgBox.setText("Tri avec succés.");
+                    msgBox.exec();
+}
+void MainWindow::on_radioButton_3_clicked()
+{
+    QMessageBox msgBox ;
+        QSqlQueryModel * model= new QSqlQueryModel();
+
+
+
+           model->setQuery("select * from etudiant order by prenom");
+
+           model->setHeaderData(0, Qt::Horizontal, QObject::tr("id_ab"));
+           model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+           model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+           model->setHeaderData(3, Qt::Horizontal, QObject::tr("payement"));
+           model->setHeaderData(4, Qt::Horizontal, QObject::tr("nbr_chats"));
+           model->setHeaderData(5, Qt::Horizontal, QObject::tr("sexe"));
+
+                    ui->tableView->setModel(model);
+                    ui->tableView->show();
+                    msgBox.setText("Tri avec succés.");
+                    msgBox.exec();
+}
+
+void MainWindow::on_pushButton_pdf_clicked()
+{
+    QString strStream;
+    QTextStream out(&strStream);
+
+    const int rowCount = ui->tab_etudiant->model()->rowCount();
+    const int columnCount = ui->tab_etudiant->model()->columnCount();
+
+    out <<  "<html>\n"
+        "<head>\n"
+        "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+        <<  QString("<title>%1</title>\n").arg("strTitle")
+        <<  "</head>\n"
+        "<body bgcolor=#ffffff link=#5000A0>\n"
+
+        //     "<align='right'> " << datefich << "</align>"
+        "<center> <H1>Liste Des abonnee </H1></br></br><table border=1 cellspacing=0 cellpadding=2>\n";
+
+    // headers
+    out << "<thead><tr bgcolor=#f0f0f0> <th>Numero</th>";
+    for (int column = 0; column < columnCount; column++)
+        if (!ui->tab_etudiant->isColumnHidden(column))
+            out << QString("<th>%1</th>").arg(ui->tab_etudiant->model()->headerData(column, Qt::Horizontal).toString());
+    out << "</tr></thead>\n";
+
+    // data table
+    for (int row = 0; row < rowCount; row++)
+    {
+        out << "<tr> <td bkcolor=0>" << row + 1 << "</td>";
+        for (int column = 0; column < columnCount; column++)
+        {
+            if (!ui->tab_etudiant->isColumnHidden(column))
+            {
+                QString data = ui->tab_etudiant->model()->data(ui->tab_etudiant->model()->index(row, column)).toString().simplified();
+                out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+            }
+        }
+        out << "</tr>\n";
+    }
+    out <<  "</table> </center>\n"
+        "</body>\n"
+        "</html>\n";
+
+    QString fileName = QFileDialog::getSaveFileName((QWidget * )0, "Sauvegarder en PDF", QString(), "*.pdf");
+    if (QFileInfo(fileName).suffix().isEmpty())
+    {
+        fileName.append(".pdf");
+    }
+
+    QPrinter printer (QPrinter::PrinterResolution);
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setPaperSize(QPrinter::A4);
+    printer.setOutputFileName(fileName);
+
+    QTextDocument doc;
+    doc.setHtml(strStream);
+    doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
+    doc.print(&printer);
+}
+
+void MainWindow::on_le_stat_clicked()
+{
+    statis1 *w=new statis1();
+    w->make();
+    w->show();
+}
+
+
+void MainWindow::on_pb_supprimer_3_clicked()
+{
+    Abonne a1;a1.setid_ab(ui->le_id_sup->text().toInt());
+
+        bool test=a1.supprimer(a1.getid_ab());
+        srand (time(NULL));
+                                  QDate d = QDate::currentDate() ;
+                                   QString datee =d.toString("dd / MM / yyyy ") ;
+                                   QString fn="supprimer" ;
+                                  QString nom1 = ui->le_nom->text();
+                                projeth pp(nom1,datee,fn) ;
+                                bool test1=pp.modifierhis() ;
+
+        QMessageBox msgBox;
+        if(test)
+           { msgBox.setText("Suppression avec succes.");
+
+            ui->tab_etudiant->setModel(a.afficher());
+            QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                     notifyIcon->show();
+                                     notifyIcon->setIcon(QIcon("icone.png"));
+
+                                     notifyIcon->showMessage("GESTION ABONNE   ","Abonne supprimer",QSystemTrayIcon::Information,15000);
+                     QMessageBox::information(nullptr, QObject::tr("OK"),
+                                 QObject::tr("suppression effectué.\n"
+                                             "Click Cancel to exit."), QMessageBox::Cancel);
+
+
+    }
+        else
+            msgBox.setText("Echec de suppression");
+        msgBox.exec();
+}
+
+void MainWindow::on_pushButton_32_clicked()
+{
+    ui->tabhis->setModel(tmph.afficherhis()) ;
+    ui->tabhis->setModel(tmph.afficherhis());//refresh
+
+}
+
+void MainWindow::on_pb_ajouter_4_clicked()
+{
+    int id=ui->le_id_2->text().toInt();
+    QDate date_deb=ui->le_date_deb->date();
+   QDate date_fin=ui->le_date_fin->date();
+
+    Abonnement b(id,date_deb,date_fin);
+
+bool test=b.ajouter();
+if(test){
+    QMessageBox::information(nullptr,QObject::tr("Abonnement"),QObject::tr("abonnement ajouté\n" "click ok to exit"),QMessageBox::Ok);
+    ui->le_id_2->setText("");//bech ba3ed mankamel l ajout yarja3 a 0
+
+    ui->tab_etudiant_2->setModel(b.afficher());//actualisation
+    QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                             notifyIcon->show();
+                             notifyIcon->setIcon(QIcon("icone.png"));
+
+                             notifyIcon->showMessage("GESTION ABONNEMENT   ","Abonnement Ajouté",QSystemTrayIcon::Information,15000);
+             QMessageBox::information(nullptr, QObject::tr("OK"),
+                         QObject::tr("Ajout effectué.\n"
+                                     "Click Cancel to exit."), QMessageBox::Cancel);
+
+
+}
+else{
+    QMessageBox::critical(nullptr,QObject::tr("Abonnement"),QObject::tr("Erreur!\n" "click ok to exit"),QMessageBox::Ok);
+}
+
+}
+
+void MainWindow::on_le_modifier_2_clicked()
+{
+    int id= ui->le_id_2->text().toInt();
+
+            QDate date_deb=ui->le_date_deb->date();
+            QDate date_fin=ui->le_date_fin->date();
+                           Abonnement b(id,date_deb,date_fin);
+                           ui->le_id_2->setText("");
+
+
+                bool test = b.update(id,date_deb,date_fin);
+
+
+                if(test)
+
+                {
+                     ui->tab_etudiant_2->setModel(b.afficher());
+                     QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                              notifyIcon->show();
+                                              notifyIcon->setIcon(QIcon("icone.png"));
+
+                                              notifyIcon->showMessage("GESTION ABONNEMENT  ","Abonnement Modifier",QSystemTrayIcon::Information,15000);
+                              QMessageBox::information(nullptr, QObject::tr("OK"),
+                                          QObject::tr("Modification effectué.\n"
+                                                      "Click Cancel to exit."), QMessageBox::Cancel);
+                    QMessageBox::information(nullptr, QObject::tr("update "),
+                                QObject::tr("Participant modifie\n"
+                "Click Cancel to exit."), QMessageBox::Cancel);}
+}
+
+
+void MainWindow::on_pb_supprimer_4_clicked()
+{
+    Abonnement b1;
+    b1.setid(ui->le_id_sup_2->text().toInt());
+        bool test=b1.supprimer(b1.getid());
+        QMessageBox msgBox;
+        if(test)
+           { msgBox.setText("Suppression avec succes.");
+            ui->tab_etudiant_2->setModel(b.afficher());
+            QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                     notifyIcon->show();
+                                     notifyIcon->setIcon(QIcon("icone.png"));
+
+                                     notifyIcon->showMessage("GESTION ABONNEMENT   ","Abonnement supprimer",QSystemTrayIcon::Information,15000);
+                     QMessageBox::information(nullptr, QObject::tr("OK"),
+                                 QObject::tr("suppression effectué.\n"
+                                             "Click Cancel to exit."), QMessageBox::Cancel);
+
+    }
+        else
+            msgBox.setText("Echec de suppression");
+        msgBox.exec();
+}
+
+void MainWindow::on_le_recherche_abonne_textChanged(const QString &arg1)
+{
+    Abonne a;
+        if(ui->le_recherche_abonne->text() == "")
+            {
+                ui->tableView_7->setModel(a.afficher());
+            }
+            else
+            {
+                 ui->tableView_7->setModel(a.rechercher(ui->le_recherche_abonne->text()));
+            }
+}
+
+
+void MainWindow::on_youssef_clicked()
+{
+    ui->stackedWidget_2->setCurrentIndex(5);
+
+}
+
+void MainWindow::on_radioButton_12_clicked()
+{
+    QMessageBox msgBox ;
+        QSqlQueryModel * model= new QSqlQueryModel();
+
+
+
+           model->setQuery("select * from etudiant order by prenom");
+
+           model->setHeaderData(0, Qt::Horizontal, QObject::tr("id_ab"));
+           model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+           model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+           model->setHeaderData(3, Qt::Horizontal, QObject::tr("payement"));
+           model->setHeaderData(4, Qt::Horizontal, QObject::tr("nbr_chats"));
+           model->setHeaderData(5, Qt::Horizontal, QObject::tr("sexe"));
+
+                    ui->tableView_7->setModel(model);
+                    ui->tableView_7->show();
+                    msgBox.setText("Tri avec succés.");
+                    msgBox.exec();
+}
+
+void MainWindow::on_logout_button_clicked()
+{
+
+
+        this->setFixedSize(login_width,login_height);
+        this->move(center_login_x,center_login_y);
+        ui->stackedWidget->setCurrentIndex(0);
+
+}
+
+void MainWindow::on_mdp_oublie_label_linkActivated(const QString &)
+{
+    if (ui->usernameLineEdit_login->text()!="")
+    {
+        login login;
+        QString code=login.code_generator();
+        QString email=login.fetch_email(ui->usernameLineEdit_login->text());
+        login.update_mpd_reset(ui->usernameLineEdit_login->text(),code);
+
+        QMessageBox::information(this, tr("Mot de passe oublié"), tr("Un code de vérification a été envoyé à votre adresse e-mail."));
+
+
+        ui->passwordLabel->setText("Code");
+
+        Smtp* smtp = new Smtp("boutheina.lagrem@esprit.tn", "Dpstream1", "smtp.gmail.com", 465);
+        smtp->sendMail("boutheina.lagrem@esprit.tn", email , "Mot de Passe oublié" ,code);
+
+        ui->usernameLineEdit_login->text().clear();
+        ui->passwordLineEdit_login->text().clear();
+
+    }
+
+}
+
+void MainWindow::on_radioButton_jour_toggled(bool checked)
+{
+    this->setStyleSheet("font: 8pt \"Pacifico\";");
+
+
+    QList<QPushButton *> butts = this->findChildren<QPushButton *>();
+
+    for (int i=0; i<butts.size();i++)
+    {
+        butts.at(i)->setStyleSheet("QPushButton { background-color: grey; }");
+    }
+    QList<QTabWidget *> tabs = this->findChildren<QTabWidget *>();
+
+    for (int i=0; i<tabs.size();i++)
+    {
+        tabs.at(i)->setStyleSheet("QTabBar::tab { background-color: grey;}");
+    }
+}
+
+void MainWindow::on_radioButton_nuit_toggled(bool checked)
+{
+    login login;
+    QString pref=login.fetch_preferences(current_user);
+
+
+
+    pref[0]='N';
+    this->setStyleSheet("font: 8pt \"Pacifico\";"
+                        "background-color: rgb(43, 40, 38);"
+                        "color: rgb(255, 255, 255);");
+
+
+
+    QList<QPushButton *> butts = this->findChildren<QPushButton *>();
+
+    for (int i=0; i<butts.size();i++)
+    {
+        butts.at(i)->setStyleSheet("QPushButton { background-color: #444444; }");
+    }
+
+
+    QList<QTabWidget *> tabs = this->findChildren<QTabWidget *>();
+
+    for (int i=0; i<tabs.size();i++)
+    {
+        tabs.at(i)->setStyleSheet("QTabBar::tab { background-color: rgb(68, 68, 68);}");
+    }
+
+    //        QList<QTableView *> tabviews = this->findChildren<QTableView *>();
+
+    //        for (int i=0; i<tabviews.size();i++)
+    //        {
+    //            tabs.at(i)->setStyleSheet("QTableView::tab { background-color: rgb(68, 68, 68);}");
+    //       }
+
+}
+
+void MainWindow::on_confirmer_langue_clicked()
+{
+    if (ui->comboBox_langue->currentText()=="Français")
+    {
+        //translator->load("D:\\Users\\dhiaa\\Desktop\\working_on\\wedding_planner_fr");
+        qDebug() << QDir::currentPath();
+        translator->load(QDir::currentPath().append("/wedding_planner_fr"));
+        qApp->installTranslator(translator);
+        ui->retranslateUi(this);
+        ui->comboBox_langue->setCurrentText("Français");
+    }
+    else if (ui->comboBox_langue->currentText()=="English")
+    {
+        //translator->load("D:\\Users\\dhiaa\\Desktop\\working_on\\wedding_planner_en");
+        translator->load("D:\\Users\\dhiaa\\Desktop\\Wedding_planner_2A1\\INTEGRATION\\wedding_planner_en");
+        //        qDebug() << QDir::currentPath().append("/wedding_planner_en");
+        //        translator->load(QDir::currentPath().append("/wedding_planner_en"));
+        qApp->installTranslator(translator);
+        ui->retranslateUi(this);
+        ui->comboBox_langue->setCurrentText("English");
+    }
+}
+
+void MainWindow::on_ouvrir_media_clicked()
+{
+    QString filename =QFileDialog::getOpenFileName(this,"ouvrir");
+    if(filename.isEmpty()){
+        return;
+}
+    mMediaPlayer->setMedia(QUrl::fromLocalFile(filename));
+    mMediaPlayer->setVolume(ui->volume_media->value());
+    on_play_media_clicked();
+}
+
+
+
+void MainWindow::on_play_media_clicked()
+{
+    mMediaPlayer->play();
+}
+
+void MainWindow::on_pause_media_clicked()
+{
+    mMediaPlayer->pause();
+}
+
+void MainWindow::on_stop_media_clicked()
+{
+    mMediaPlayer->stop();
+}
+
+void MainWindow::on_mute_media_clicked()
+{
+    if (ui->mute_media->text() == "Mute")
+
+    {
+
+        mMediaPlayer->setMuted(true);
+
+        ui->mute_media->setText("Unmute");
+
+    }
+
+    else {
+
+        mMediaPlayer->setMuted(false);
+
+        ui->mute_media->setText("Mute");
+
+    }
+}
+
+void MainWindow::on_volume_media_valueChanged(int value)
+{
+    mMediaPlayer->setVolume(value);
+}
+
+
+void MainWindow::on_annuler_chan_mdp_clicked()
+{
+    ui->ancienMotDePasseLineEdit->clear();
+    ui->nouveauMotDePasseLineEdit->clear();
+    ui->confirmerNouveauMotDePasseLineEdit->clear();
+}
+
+void MainWindow::on_confirmer_chan_mdp_clicked()
+{
+    if (ui->confirmerNouveauMotDePasseLineEdit->text()==ui->nouveauMotDePasseLineEdit->text())
+    {
+        if (ui->ancienMotDePasseLineEdit->text()!="" && ui->confirmerNouveauMotDePasseLineEdit->text()!="")
+        {
+            bool test=log->modifier_mdp(current_user,ui->ancienMotDePasseLineEdit->text(),ui->nouveauMotDePasseLineEdit->text());
+
+            if (!test)
+                QMessageBox::warning(this,tr("Changement du MDP"),tr("Erreur lors du changement du MDP"));
+            else
+            {
+                ui->ancienMotDePasseLineEdit->clear();
+                ui->nouveauMotDePasseLineEdit->clear();
+                ui->confirmerNouveauMotDePasseLineEdit->clear();
+            }
+        }
+        else
+            QMessageBox::warning(this,tr("Changement du MDP"),tr("Veuillez remplir tous les champs"));
+    }
+    else
+        QMessageBox::warning(this,tr("Changement du MDP"),tr("Les deux mots de passe ne sont pas identiques"));
+}
+
+void MainWindow::on_ajouter_image_clicked()
+{
+    login login;
+    login.ajouter_image(current_user);
+
+
+
+    QPixmap outPixmap = QPixmap();
+    outPixmap.loadFromData(log->fetch_image(current_user),"PNG");
+    outPixmap = outPixmap.scaledToWidth(ui->image_pos->width(),Qt::SmoothTransformation);
+
+    // ui->image_pos->setPixmap(outPixmap);
+
+    ui->image_pos->setPixmap(outPixmap.scaled(outPixmap.width(),outPixmap.height(),Qt::KeepAspectRatio));
+}
+
+
+void MainWindow::on_cant_touch_this_pressed()
+{
+    int x = rand() % 200 - 100;
+    int y = rand() % 200 - 100;
+    this->move(x,y);
+    player->play();
+}
+
+/* void MainWindow::on_pushButton_5_clicked()
+{
+    QItemSelectionModel *select = ui->tableView_3->selectionModel();
+
+ int cin = ui->lineEditcin->text().toInt();
+    if(tmppersonnel.supprimer(cin))
+    {
+        ui->tableView_3->setModel(tmppersonnel.afficher());
+        musicAdd.setMedia(QUrl("D:/Users/dhiaa/Desktop/Wedding_planner_2A1/INTEGRATION/supp succe.mp3"));
+        musicAdd.play();
+        mSystemTrayIcon->showMessage(tr("Notification"),
+                                     tr("Service supprimé"));
+        QMessageBox::information(nullptr, QObject::tr("Supprimer service"),
+                                 QObject::tr("service supprimé.\n"
+                                             "Click Cancel to exit."), QMessageBox::Cancel);
+
+        int n=ui->tableView_3->model()->rowCount();
+        int n2=ui->tableView_3->model()->rowCount();
+        ui->comboBox_C_2->clear();
+        ui->rech_service->clear();
+
+        for (int i=0;i<n;i++)
+        {
+            QString type_service = ui->tableView_service->model()->index(i, 0).data().toString();
+            ui->comboBox_C_2->addItem(type_service);
+        }
+        for (int j=0;j<n2;j++)
+        {
+            QString type_service = ui->tableView_service->model()->index(j, 0).data().toString();
+            ui->rech_service->addItem(type_service);
+        }
+    }
+
+    //   QString type= ui->lineEdit_type->text();
+    //    bool test=tmpservice.supprimer_service(type);
+    //    if(test)
+    //    {
+    //        ui->tableView_service->setModel(tmpservice.afficher_service());
+    //        QMessageBox::information(nullptr, QObject::tr("Supprimer service"),
+    //                    QObject::tr("service supprimé.\n"
+    //                                "Click Cancel to exit."), QMessageBox::Cancel);
+    //        int n=ui->tableView_service->model()->rowCount();
+    //        ui->comboBox_C_2->clear();
+
+    //        for (int i=0;i<n;i++)
+    //        {
+    //            QString type_service = ui->tableView_service->model()->index(i, 0).data().toString();
+    //            ui->comboBox_C_2->addItem(type_service);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        QMessageBox::information(nullptr, QObject::tr("Supprimer service"),
+    //                    QObject::tr("Suppression echoué.\n"
+    //                                "Click Cancel to exit."), QMessageBox::Cancel);
+    //    }
+}*/
+
+
+
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    int reponse = QMessageBox::question(this, tr("Suppression du compte"), tr("Voulez-vous vraiment supprimer votre compte?"), QMessageBox ::Yes | QMessageBox::No);
+    if (reponse == QMessageBox::Yes)
+    {
+        login login;
+        login.delete_account(current_user);
+        ui->stackedWidget->setCurrentIndex(0);
+        this->move(center_login_x,center_login_y);
+        this->setFixedSize(login_width,login_height);
+    }
+
+}
+
+void MainWindow::on_configuration_clicked()
+{
+    ui->stackedWidget_2->setCurrentIndex(0);
 
 }
