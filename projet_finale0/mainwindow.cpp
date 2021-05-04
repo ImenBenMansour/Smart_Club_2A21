@@ -3,10 +3,11 @@
 #include "personnel.h"
 #include "role.h"
 #include "dialog.h"
+#include"statis3.h"
 #include "stati.h"
 #include "statis.h"
-#include "stat.h"
 #include"statis1.h"
+#include"statis2.h"
 #include "smtp.h"
 #include <QFile>
 #include<QMainWindow>
@@ -14,6 +15,7 @@
 #include <QMessageBox>
 #include <QSqlTableModel>
 #include <QApplication>
+#include<QPixmap>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -21,6 +23,13 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setStyleSheet("background-color: transparent;");
+
+    QPixmap pix("C:/Users/LENOVO/Desktop/chien.jfif");
+    int w=ui->label_pic->width();
+    int h=ui->label_pic->height();
+    ui->label_pic->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
+
     sound=new QSound("C:/Users/LENOVO/Desktop/boutheina lagrem/projet-test/music.wav");//lecture sound
 
     cin_regex=QRegExp("[0-9]{4}$");// controle saisie
@@ -55,17 +64,17 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEdit_reference->setStyleSheet("QLineEdit { color: red;}");
 
     //windows size
-    initial_width=this->width()*0.8;
+   initial_width=this->width()*0.95;
     initial_height=this->height();
 
-    login_width=this->width()*0.5;
+   login_width=this->width()*0.7;
     login_height=this->height()*0.7;
 
-    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+  /*  QRect screenGeometry = QApplication::desktop()->screenGeometry();
     center_main_x=(screenGeometry.width()-initial_width) / 2;
     center_main_y=(screenGeometry.height()-initial_height) / 2;
     center_login_x=(screenGeometry.width()-login_width) / 2;
-    center_login_y=(screenGeometry.height()-login_height) / 2;
+    center_login_y=(screenGeometry.height()-login_height) / 2;*/
 
 
 
@@ -502,10 +511,7 @@ void MainWindow::on_checkBox_3_stateChanged(int arg1)
 void MainWindow::on_pushButton_8_clicked()
 {
 
-
-
-
-            Stat *w = new Stat();
+            Statis3 *w = new Statis3();
             w->make();
             w->show();
 
@@ -694,7 +700,7 @@ void MainWindow::on_pushButton_14_clicked()
 }
 void MainWindow::on_pushButton_15_clicked()
 {
-    Stat *w = new Stat();
+    statis2 *w = new statis2();
     w->make();
     w->show();
 
@@ -790,8 +796,8 @@ void MainWindow::on_radioButton_7_clicked()
        model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
        model->setHeaderData(3, Qt::Horizontal, QObject::tr("offre"));
        model->setHeaderData(4, Qt::Horizontal, QObject::tr("numero"));
-                ui->tableView->setModel(model);
-                ui->tableView->show();
+                ui->tableView_5->setModel(model);
+                ui->tableView_5->show();
                 msgBox.setText("Tri avec succés.");
                 msgBox.exec();
 }
@@ -812,8 +818,8 @@ void MainWindow::on_radioButton_8_clicked()
                model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
                model->setHeaderData(3, Qt::Horizontal, QObject::tr("offre"));
                model->setHeaderData(4, Qt::Horizontal, QObject::tr("numero"));
-                        ui->tableView->setModel(model);
-                        ui->tableView->show();
+                        ui->tableView_5->setModel(model);
+                        ui->tableView_5->show();
                         msgBox.setText("Tri avec succés.");
                         msgBox.exec();
 
@@ -832,8 +838,8 @@ void MainWindow::on_radioButton_9_clicked()
            model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
            model->setHeaderData(3, Qt::Horizontal, QObject::tr("offre"));
            model->setHeaderData(4, Qt::Horizontal, QObject::tr("numero"));
-                    ui->tableView->setModel(model);
-                    ui->tableView->show();
+                    ui->tableView_5->setModel(model);
+                    ui->tableView_5->show();
                     msgBox.setText("Tri avec succés.");
                     msgBox.exec();
 
@@ -905,7 +911,7 @@ void MainWindow::on_login_button_clicked()
             outPixmap = outPixmap.scaledToWidth(ui->image_pos->width(),Qt::SmoothTransformation);
             ui->image_pos->setPixmap(outPixmap.scaled(outPixmap.width(),outPixmap.height(),Qt::KeepAspectRatio));
 
-            ui->uname_label->setText(current_user);
+           // ui->uname_label->setText(current_user);
 
         }
         else
@@ -942,7 +948,7 @@ void MainWindow::on_login_button_clicked()
 
             this->move(center_main_x, center_main_y);
 
-            ui->uname_label->setText(current_user);
+     //       ui->uname_label->setText(current_user);
 
             QPixmap outPixmap = QPixmap();
             outPixmap.loadFromData(log->fetch_image(current_user),"PNG");
@@ -981,7 +987,7 @@ void MainWindow::on_signup_button_clicked()
             outPixmap = outPixmap.scaledToWidth(ui->image_pos->width(),Qt::SmoothTransformation);
             ui->image_pos->setPixmap(outPixmap.scaled(outPixmap.width(),outPixmap.height(),Qt::KeepAspectRatio));
 
-            ui->uname_label->setText(current_user);
+          //  ui->uname_label->setText(current_user);
 
             ui->usernameLineEdit_signup->clear();
             ui->eMailLineEdit_signup->clear();
@@ -2664,3 +2670,5 @@ void MainWindow::on_configuration_clicked()
     ui->stackedWidget_2->setCurrentIndex(0);
 
 }
+
+

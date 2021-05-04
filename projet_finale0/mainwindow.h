@@ -14,6 +14,8 @@
 #include"abonne.h"
 #include"abonnement.h"
 #include"statis1.h"
+#include"statis2.h"
+#include"stat.h"
 
 //#include "chat.h"
 #include <QMainWindow>
@@ -49,7 +51,7 @@ private slots:
     void on_pushButton_2_clicked();
 
 
-    void on_pushButton_4_clicked();
+   // void on_pushButton_4_clicked();
 
     void on_pushButton_3_clicked();
 
@@ -65,13 +67,13 @@ private slots:
 
    // void on_lineEdit_4_textChanged(const QString &arg1);
 
-    void on_radioButton_clicked();
+   // void on_radioButton_clicked();
 
     void on_radioButton_salaire_clicked();
 
-    void on_radioButton_2_clicked();
+    //void on_radioButton_2_clicked();
 
-    void on_pushButton_clicked();
+    //void on_pushButton_clicked();
 
     void on_pushButton_8_clicked();
 
@@ -80,7 +82,7 @@ private slots:
 
 
 
- void on_pushButton_5_clicked();
+ //void on_pushButton_5_clicked();
 
 
 
@@ -90,16 +92,16 @@ private slots:
 
  void on_checkBox_3_stateChanged(int arg1);
 
- void on_checkBox_4_stateChanged(int arg1);
+// void on_checkBox_4_stateChanged(int arg1);
 
  void on_pushButton_6_clicked();
 
- void on_tabWidget_currentChanged(int index);
+ //void on_tabWidget_currentChanged(int index);
 
 
  void on_azzerty_textChanged(const QString &arg1);
 
- void on_chat_clicked();
+// void on_chat_clicked();
 
  void on_envoyer_clicked();
 
@@ -127,7 +129,7 @@ private slots:
  void on_pushButton_quitter_clicked();
  void on_pushButton_14_clicked();
 
- void on_lineEdit_6_textChanged(const QString &arg1);
+// void on_lineEdit_6_textChanged(const QString &arg1);
 
  void on_pushButton_19_clicked();
 
@@ -150,29 +152,29 @@ private slots:
 
 
 
- void on_pushButton_16_clicked();
+// void on_pushButton_16_clicked();
 
  void on_pushButton_16_windowIconTextChanged(const QString &iconText);
 
- void on_lineEdit_textChanged(const QString &arg1);
+void on_lineEdit_textChanged(const QString &arg1);
 
 
  void on_pushButton_18_clicked();
 
  void on_pushButton_17_clicked();
 
+void on_lineEdit_6_textChanged(const QString &arg1);
 
+//void on_lineEdit_6_TextChanged(const QString &arg1);
 
-void on_lineEdit_6_TextChanged(const QString &arg1);
-
-void on_checkBox_clicked();
+//void on_checkBox_clicked();
 
 //login
 void on_login_button_clicked ();
 void on_signup_button_clicked();
 void on_mail_clicked();
 
-void on_comboBox_3_activated(const QString &arg1);
+//void on_comboBox_3_activated(const QString &arg1);
 
 
 //eya et cynda
@@ -193,7 +195,7 @@ void on_radioButton_tri_daE_clicked();
 
 void on_pushButton_30_clicked();
 
-void sendMail();
+//void sendMail();
 void mailSent(QString);
 void browse();
 
@@ -237,7 +239,7 @@ void on_pushButton_exporter_f_clicked();
 
 void on_pushButton_31_clicked();
 
-void on_sendBtn_clicked();
+//void on_sendBtn_clicked();
 
 void on_pushButton_21_clicked();
 
@@ -259,7 +261,7 @@ void on_eya_clicked();
 
 void on_cynda_clicked();
 
-void on_checkBox_RefE_stateChanged(int arg1);
+//void on_checkBox_RefE_stateChanged(int arg1);
 
 //sidhom
 
@@ -280,9 +282,9 @@ void on_le_modifier_2_clicked();
 
 void on_le_recherche_abonne_textChanged(const QString &arg1);
 
-void on_pb_recherche_abonne_clicked();
+//void on_pb_recherche_abonne_clicked();
 
-void on_combo_client_activated(const QString &arg1);
+//void on_combo_client_activated(const QString &arg1);
 
 
 
@@ -290,11 +292,11 @@ void on_pushButton_pdf_clicked();
 
 void on_le_stat_clicked();
 
-void on_le_id_textChanged(const QString &arg1);
+//void on_le_id_textChanged(const QString &arg1);
 
-void on_le_id_sup_textChanged(const QString &arg1);
+//void on_le_id_sup_textChanged(const QString &arg1);
 
-void on_le_id_sup_2_textChanged(const QString &arg1);
+//void on_le_id_sup_2_textChanged(const QString &arg1);
 
 
 void on_pb_ajouter_3_clicked();
@@ -349,6 +351,7 @@ void on_ajouter_image_clicked();
 void on_cant_touch_this_pressed();
 
 void on_configuration_clicked();
+
 
 private:
     Ui::MainWindow *ui;

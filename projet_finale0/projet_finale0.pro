@@ -37,10 +37,11 @@ SOURCES += \
     role.cpp \
     smtp.cpp \
     sponsor.cpp \
-    stat.cpp \
     stati.cpp \
     statis.cpp \
     statis1.cpp \
+    statis2.cpp \
+    statis3.cpp \
     widget.cpp
 
 HEADERS += \
@@ -62,19 +63,21 @@ HEADERS += \
     role.h \
     smtp.h \
     sponsor.h \
-    stat.h \
     stati.h \
     statis.h \
     statis1.h \
+    statis2.h \
+    statis3.h \
     widget.h
 
 FORMS += \
     dialog.ui \
     mainwindow.ui \
-    stat.ui \
     stati.ui \
     statis.ui \
     statis1.ui \
+    statis2.ui \
+    statis3.ui \
     widget.ui
 
 # Default rules for deployment.

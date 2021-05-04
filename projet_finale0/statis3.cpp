@@ -1,0 +1,69 @@
+#include "statis3.h"
+#include "ui_statis3.h"
+#include <QString>
+#include"personnel.h"
+#include<qsqlquery.h>
+
+
+Statis3::Statis3(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::Statis3)
+{
+    ui->setupUi(this);
+}
+Statis3::~Statis3()
+{
+    delete ui;
+}
+
+
+void Statis3::make()
+{
+    int finance;
+            int marketing;
+            int total;
+            QString Finance;
+            QString Marketing;
+            QSqlQuery q;
+
+            q.prepare("SELECT COUNT(cin) FROM personnel where role ='Finance' ");
+            q.exec();
+            q.first() ;
+            finance=(q.value(0).toInt());
+
+            q.prepare("SELECT COUNT(cin) FROM personnel where role ='Marketing' ");
+            q.exec();
+            q.first() ;
+            marketing=(q.value(0).toInt());
+            q.prepare("SELECT COUNT(cin) FROM personnel  ");
+            q.exec();
+            q.first() ;
+            total=(q.value(0).toInt());
+
+            marketing=((double)marketing/(double)total)*100;
+            finance=100-marketing;
+
+            Finance= QString::number(finance);
+            Marketing=QString::number(marketing);
+            QPieSeries *series;
+             series= new  QPieSeries();
+             series->append("FINANCE"+Finance+"%",finance);
+             series->append("MARKETING"+Marketing+"%",marketing);
+             QPieSlice *slice0 = series->slices().at(0);
+              slice0->setLabelVisible();
+
+              QPieSlice *slice1 = series->slices().at(1);
+                 slice1->setExploded();
+                 slice1->setLabelVisible();
+                 slice1->setPen(QPen(Qt::darkRed, 2));
+                 slice1->setBrush(Qt::black);
+
+                  QChart *chart = new QChart();
+                  chart->addSeries(series);
+                  chart->setTitle("Statistiques sur les roles ");
+                  chart->legend()->show();
+                  QChartView *chartView = new QChartView(chart);
+                  chartView->setRenderHint(QPainter::Antialiasing);
+                  ui->verticalLayout->addWidget(chartView);
+
+}
