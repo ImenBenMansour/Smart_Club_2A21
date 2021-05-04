@@ -25,10 +25,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     this->setStyleSheet("background-color: transparent;");
 
-    QPixmap pix("C:/Users/LENOVO/Desktop/chien.jfif");
-    int w=ui->label_pic->width();
-    int h=ui->label_pic->height();
-    ui->label_pic->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
+    QPixmap pix("C:/Users/LENOVO/Desktop/Imageeee/chats.jfif");
+    //int w=ui->label_pic->width();
+   // int h=ui->label_pic->height();
+   // ui->label_pic->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
 
     sound=new QSound("C:/Users/LENOVO/Desktop/boutheina lagrem/projet-test/music.wav");//lecture sound
 
@@ -67,7 +67,7 @@ MainWindow::MainWindow(QWidget *parent)
    initial_width=this->width()*0.95;
     initial_height=this->height();
 
-   login_width=this->width()*0.7;
+   login_width=this->width()*0.8;
     login_height=this->height()*0.7;
 
   /*  QRect screenGeometry = QApplication::desktop()->screenGeometry();
@@ -82,7 +82,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 //maryem
 
-    this->setStyleSheet("background-color: rgb(157,0,79);");
+    //this->setStyleSheet("background-color: rgb(157,0,79);");
 
     ui->lineEdit_id->setPlaceholderText("id ...");
     ui->lineEdit_idp->setPlaceholderText("id ...");
@@ -2671,4 +2671,33 @@ void MainWindow::on_configuration_clicked()
 
 }
 
+
+
+void MainWindow::on_chat_clicked()
+{
+    chat *chat_window= new chat(this);
+    chat_window->setModal(true);
+    chat_window->show();
+
+    //qDebug()<< "Chat is running on " << QThread::currentThread();
+
+    chat_window->exec();
+
+
+
+    //    QFuture<bool> future= QtConcurrent::run(this,&MainWindow::launch_chat,chat_window);
+
+    //    qDebug() << "Min thread free ...";
+    //    qDebug() << "Result: " << future.result();
+
+}
+/*bool MainWindow::launch_chat(chat &chat_window)
+{
+    chat_window.setModal(true);
+    chat_window.show();
+
+    qDebug()<< "Chat is running on " << QThread::currentThread();
+
+    return chat_window.exec();
+}*/
 

@@ -17,7 +17,6 @@
 #include"statis2.h"
 #include"stat.h"
 
-//#include "chat.h"
 #include <QMainWindow>
 #include <QtMultimedia/QSound>
 
@@ -33,6 +32,11 @@
 #include <QSystemTrayIcon>
 #include <QFuture>
 #include <QSound>
+
+
+#include <QtConcurrent>
+#include <qtextbrowser.h>
+#include "chat.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -352,6 +356,8 @@ void on_cant_touch_this_pressed();
 
 void on_configuration_clicked();
 
+
+void on_chat_clicked();
 
 private:
     Ui::MainWindow *ui;

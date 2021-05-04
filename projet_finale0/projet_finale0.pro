@@ -1,5 +1,5 @@
 QT       += core gui
-QT       += core gui sql serialport printsupport network charts multimedia
+QT       += core gui sql serialport printsupport network charts multimedia concurrent
 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -22,6 +22,7 @@ SOURCES += \
     abonnement.cpp \
     animal.cpp \
     board_widget.cpp \
+    chat.cpp \
     connexion.cpp \
     dialog.cpp \
     equipement.cpp \
@@ -49,6 +50,7 @@ HEADERS += \
     abonnement.h \
     animal.h \
     board_widget.h \
+    chat.h \
     connexion.h \
     dialog.h \
     equipement.h \
@@ -71,6 +73,7 @@ HEADERS += \
     widget.h
 
 FORMS += \
+    chat.ui \
     dialog.ui \
     mainwindow.ui \
     stati.ui \
