@@ -1,0 +1,49 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>Images/2413035.png</file>
+        <file>Images/69001933-icône-de-nuage-de-message-icône-noire-sur-fond-transparent-.jpg</file>
+        <file>Images/abonnement.jfif</file>
+        <file>Images/animaux.jpg</file>
+        <file>Images/awesome3x3.jpg</file>
+        <file>Images/awesome4x4.jpg</file>
+        <file>Images/awesome5x5.jpg</file>
+        <file>Images/Back button white.png</file>
+        <file>Images/background.jfif</file>
+        <file>Images/classic4x4.png</file>
+        <file>Images/config.jpg</file>
+        <file>Images/eq.png</file>
+        <file>Images/gray4x4.png</file>
+        <file>Images/human-resources.png</file>
+        <file>Images/Icon.png</file>
+        <file>Images/ited3x3.png</file>
+        <file>Images/ited4x4.png</file>
+        <file>Images/ited5x5.png</file>
+        <file>Images/logo.jpg</file>
+        <file>Images/logout.png</file>
+        <file>Images/me3x3.png</file>
+        <file>Images/me4x4.png</file>
+        <file>Images/me5x5.png</file>
+        <file>Images/Messaging-Question-icon.png</file>
+        <file>Images/Next button white.png</file>
+        <file>Images/orange4x4.png</file>
+        <file>Images/Play sound2.png</file>
+        <file>Images/Question_Mark-512.png</file>
+        <file>Images/rage3x3.jpg</file>
+        <file>Images/rage4x4.jpg</file>
+        <file>Images/rage5x5.jpg</file>
+        <file>Images/red4x4.jpg</file>
+        <file>Images/rupp3x3.png</file>
+        <file>Images/rupp4x4.png</file>
+        <file>Images/rupp5x5.png</file>
+        <file>Images/Styled blue background.jpg</file>
+        <file>Images/tb3x3.png</file>
+        <file>Images/tb4x4.png</file>
+        <file>Images/tb5x5.png</file>
+        <file>Images/Title Black.png</file>
+        <file>Images/troll_face3x3.png</file>
+        <file>Images/troll_face4x4.png</file>
+        <file>Images/troll_face5x5.png</file>
+        <file>Images/lbara.png</file>
+    </qresource>
+    <qresource prefix="/new/prefix2"/>
+</RCC>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1271</width>
-    <height>926</height>
+    <width>1311</width>
+    <height>892</height>
    </rect>
   </property>
   <property name="palette">
@@ -472,10 +472,10 @@
      <item>
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="styleSheet">
-        <string notr="true">background-color:rgb(198, 175, 255);</string>
+        <string notr="true"/>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="page">
         <widget class="QGroupBox" name="groupBox_2">
@@ -494,6 +494,9 @@
            <weight>75</weight>
            <bold>true</bold>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
          </property>
          <property name="title">
           <string>Inscription</string>
@@ -921,6 +924,22 @@
           </item>
          </layout>
         </widget>
+        <widget class="QLabel" name="label_pic">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>-5</y>
+           <width>1241</width>
+           <height>801</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+        <zorder>label_pic</zorder>
+        <zorder>groupBox_2</zorder>
+        <zorder>groupBox</zorder>
        </widget>
        <widget class="QWidget" name="page_2">
         <widget class="QWidget" name="horizontalLayoutWidget_2">
@@ -969,8 +988,8 @@
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset>
-                   <normaloff>../Users/LENOVO/Desktop/ressources/2413035.png</normaloff>../Users/LENOVO/Desktop/ressources/2413035.png</iconset>
+                  <iconset resource="ressource.qrc">
+                   <normaloff>:/new/prefix1/Images/2413035.png</normaloff>:/new/prefix1/Images/2413035.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -1017,8 +1036,8 @@
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset>
-                   <normaloff>../Users/LENOVO/Desktop/ressources/human-resources.png</normaloff>../Users/LENOVO/Desktop/ressources/human-resources.png</iconset>
+                  <iconset resource="ressource.qrc">
+                   <normaloff>:/new/prefix1/Images/human-resources.png</normaloff>:/new/prefix1/Images/human-resources.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -1065,8 +1084,8 @@
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset>
-                   <normaloff>../Users/LENOVO/Desktop/ressources/animaux.jpg</normaloff>../Users/LENOVO/Desktop/ressources/animaux.jpg</iconset>
+                  <iconset resource="ressource.qrc">
+                   <normaloff>:/new/prefix1/Images/animaux.jpg</normaloff>:/new/prefix1/Images/animaux.jpg</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -1113,8 +1132,8 @@
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset>
-                   <normaloff>../Users/LENOVO/Desktop/ressources/eq.png</normaloff>../Users/LENOVO/Desktop/ressources/eq.png</iconset>
+                  <iconset resource="ressource.qrc">
+                   <normaloff>:/new/prefix1/Images/eq.png</normaloff>:/new/prefix1/Images/eq.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -1161,8 +1180,8 @@
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset>
-                   <normaloff>../Users/LENOVO/Desktop/ressources/69001933-icône-de-nuage-de-message-icône-noire-sur-fond-transparent-.jpg</normaloff>../Users/LENOVO/Desktop/ressources/69001933-icône-de-nuage-de-message-icône-noire-sur-fond-transparent-.jpg</iconset>
+                  <iconset resource="ressource.qrc">
+                   <normaloff>:/new/prefix1/Images/69001933-icône-de-nuage-de-message-icône-noire-sur-fond-transparent-.jpg</normaloff>:/new/prefix1/Images/69001933-icône-de-nuage-de-message-icône-noire-sur-fond-transparent-.jpg</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -1209,8 +1228,8 @@
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset>
-                   <normaloff>../Users/LENOVO/Desktop/ressources/config.jpg</normaloff>../Users/LENOVO/Desktop/ressources/config.jpg</iconset>
+                  <iconset resource="ressource.qrc">
+                   <normaloff>:/new/prefix1/Images/config.jpg</normaloff>:/new/prefix1/Images/config.jpg</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -1257,8 +1276,8 @@
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset>
-                   <normaloff>../Users/LENOVO/Desktop/ressources/logout.png</normaloff>../Users/LENOVO/Desktop/ressources/logout.png</iconset>
+                  <iconset resource="ressource.qrc">
+                   <normaloff>:/new/prefix1/Images/lbara.png</normaloff>:/new/prefix1/Images/lbara.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -1285,7 +1304,7 @@
           </rect>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="page_6">
           <widget class="QGroupBox" name="groupBox_34">
@@ -1444,42 +1463,6 @@
              </layout>
             </item>
             <item>
-             <widget class="QLabel" name="label_52">
-              <property name="font">
-               <font>
-                <family>Calibri</family>
-                <pointsize>12</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Changer photo de profil</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_151">
-              <item>
-               <widget class="QPushButton" name="ajouter_image">
-                <property name="styleSheet">
-                 <string notr="true">background-color:rgb(245, 255, 175);
-     border-style: outset;
-     border-width: 2px;
-     border-radius: 10px;
-     border-color: beige;
-     font: bold 14px;
-     min-width: 6em;
-     padding: 6px;</string>
-                </property>
-                <property name="text">
-                 <string>Changer</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
              <widget class="QLabel" name="label_17">
               <property name="font">
                <font>
@@ -1490,7 +1473,7 @@
                </font>
               </property>
               <property name="text">
-               <string>Supprimer Compte/Données</string>
+               <string>Supprimer Compte</string>
               </property>
              </widget>
             </item>
@@ -1532,6 +1515,27 @@
               </item>
              </layout>
             </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_33">
+              <item>
+               <widget class="QPushButton" name="jouer">
+                <property name="styleSheet">
+                 <string notr="true">background-color:rgb(255, 213, 248);
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: beige;
+     font: bold 14px;
+     min-width: 6em;
+     padding: 5px;</string>
+                </property>
+                <property name="text">
+                 <string>jouer</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
            </layout>
           </widget>
           <widget class="QGroupBox" name="groupBox_33">
@@ -1561,17 +1565,21 @@
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_47">
               <item>
-               <spacer name="verticalSpacer_7">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
+               <widget class="QLabel" name="label_date_time">
+                <property name="font">
+                 <font>
+                  <pointsize>14</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
                 </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
+                <property name="text">
+                 <string/>
                 </property>
-               </spacer>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_118"/>
               </item>
               <item>
                <widget class="QLabel" name="label_16">
@@ -1621,19 +1629,6 @@
                  </widget>
                 </item>
                </layout>
-              </item>
-              <item>
-               <spacer name="verticalSpacer_8">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </spacer>
               </item>
               <item>
                <widget class="QLabel" name="label_15">
@@ -1695,23 +1690,7 @@
                 </item>
                </layout>
               </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_118"/>
-              </item>
              </layout>
-            </item>
-            <item>
-             <spacer name="verticalSpacer_11">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
             </item>
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_69">
@@ -1853,7 +1832,7 @@
              <x>-10</x>
              <y>20</y>
              <width>1041</width>
-             <height>661</height>
+             <height>681</height>
             </rect>
            </property>
            <property name="font">
@@ -1869,7 +1848,7 @@
 background-color:rgb(255, 255, 255);</string>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="tab">
             <attribute name="title">
@@ -1881,7 +1860,7 @@ background-color:rgb(255, 255, 255);</string>
                <x>20</x>
                <y>340</y>
                <width>431</width>
-               <height>281</height>
+               <height>301</height>
               </rect>
              </property>
              <property name="font">
@@ -1980,7 +1959,7 @@ rgb(255, 255, 255);</string>
                 <x>270</x>
                 <y>250</y>
                 <width>118</width>
-                <height>28</height>
+                <height>31</height>
                </rect>
               </property>
               <property name="styleSheet">
@@ -2001,9 +1980,9 @@ rgb(255, 255, 255);</string>
               <property name="geometry">
                <rect>
                 <x>50</x>
-                <y>250</y>
+                <y>247</y>
                 <width>118</width>
-                <height>28</height>
+                <height>31</height>
                </rect>
               </property>
               <property name="styleSheet">
@@ -2027,7 +2006,7 @@ rgb(255, 255, 255);</string>
                <x>460</x>
                <y>340</y>
                <width>571</width>
-               <height>281</height>
+               <height>301</height>
               </rect>
              </property>
              <property name="font">
@@ -2715,8 +2694,8 @@ rgb(255, 255, 255);</string>
              <widget class="QPushButton" name="supprimer_role">
               <property name="geometry">
                <rect>
-                <x>210</x>
-                <y>530</y>
+                <x>180</x>
+                <y>510</y>
                 <width>116</width>
                 <height>30</height>
                </rect>
@@ -2733,52 +2712,6 @@ rgb(255, 255, 255);</string>
               </property>
               <property name="text">
                <string>Supprimer</string>
-              </property>
-             </widget>
-             <widget class="QPushButton" name="envoyer">
-              <property name="geometry">
-               <rect>
-                <x>65</x>
-                <y>530</y>
-                <width>131</width>
-                <height>28</height>
-               </rect>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color:rgb(235, 255, 202);
-     border-style: outset;
-     border-width: 2px;
-     border-radius: 10px;
-     border-color: beige;
-     font: bold 14px;
-     min-width: 6em;
-     padding: 5px;</string>
-              </property>
-              <property name="text">
-               <string>envoyer</string>
-              </property>
-             </widget>
-             <widget class="QPushButton" name="jouer">
-              <property name="geometry">
-               <rect>
-                <x>340</x>
-                <y>530</y>
-                <width>131</width>
-                <height>28</height>
-               </rect>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color:rgb(255, 213, 248);
-     border-style: outset;
-     border-width: 2px;
-     border-radius: 10px;
-     border-color: beige;
-     font: bold 14px;
-     min-width: 6em;
-     padding: 5px;</string>
-              </property>
-              <property name="text">
-               <string>jouer</string>
               </property>
              </widget>
             </widget>
@@ -3014,6 +2947,52 @@ rgb(255, 255, 255);</string>
               </property>
               <property name="text">
                <string>Modifier</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="envoyer">
+              <property name="geometry">
+               <rect>
+                <x>260</x>
+                <y>560</y>
+                <width>131</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(235, 255, 202);
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: beige;
+     font: bold 14px;
+     min-width: 6em;
+     padding: 5px;</string>
+              </property>
+              <property name="text">
+               <string>envoyer mail</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="google1">
+              <property name="geometry">
+               <rect>
+                <x>90</x>
+                <y>560</y>
+                <width>131</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(235, 255, 202);
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: beige;
+     font: bold 14px;
+     min-width: 6em;
+     padding: 5px;</string>
+              </property>
+              <property name="text">
+               <string>google</string>
               </property>
              </widget>
             </widget>
@@ -3338,6 +3317,23 @@ rgb(255, 255, 255);</string>
                    <layout class="QHBoxLayout" name="horizontalLayout_19">
                     <item>
                      <layout class="QHBoxLayout" name="horizontalLayout_18">
+                      <item>
+                       <widget class="QPushButton" name="google2">
+                        <property name="styleSheet">
+                         <string notr="true">background-color:rgb(235, 255, 202);
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: beige;
+     font: bold 14px;
+     min-width: 5em;
+     padding: 4px;</string>
+                        </property>
+                        <property name="text">
+                         <string>google</string>
+                        </property>
+                       </widget>
+                      </item>
                       <item>
                        <widget class="QPushButton" name="pushButton_15">
                         <property name="styleSheet">
@@ -3852,7 +3848,7 @@ rgb(255, 255, 255);</string>
             </font>
            </property>
            <property name="currentIndex">
-            <number>1</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="tab_6">
             <attribute name="title">
@@ -4153,6 +4149,29 @@ rgb(255, 255, 255);</string>
               </property>
               <property name="text">
                <string>chat</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="google3">
+              <property name="geometry">
+               <rect>
+                <x>160</x>
+                <y>530</y>
+                <width>181</width>
+                <height>29</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(210, 255, 202);
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: beige;
+     font: bold 14px;
+     min-width: 5em;
+     padding: 4px;</string>
+              </property>
+              <property name="text">
+               <string>google</string>
               </property>
              </widget>
             </widget>
@@ -5623,7 +5642,7 @@ QTableWidget QTableCornerButton::section {
             <string notr="true"/>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="tab_7">
             <attribute name="title">
@@ -7721,6 +7740,52 @@ QTableWidget QTableCornerButton::section {
                  </item>
                 </layout>
                </widget>
+               <widget class="QPushButton" name="google5">
+                <property name="geometry">
+                 <rect>
+                  <x>270</x>
+                  <y>540</y>
+                  <width>149</width>
+                  <height>31</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color:rgb(255, 213, 248);
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: beige;
+     font: bold 14px;
+     min-width: 6em;
+     padding: 5px;</string>
+                </property>
+                <property name="text">
+                 <string>google</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="calcul">
+                <property name="geometry">
+                 <rect>
+                  <x>80</x>
+                  <y>540</y>
+                  <width>149</width>
+                  <height>31</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color:rgb(240, 255, 161);
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: beige;
+     font: bold 14px;
+     min-width: 6em;
+     padding: 5px;</string>
+                </property>
+                <property name="text">
+                 <string>calculatrice</string>
+                </property>
+               </widget>
               </widget>
              </widget>
              <widget class="QWidget" name="page_17">
@@ -7950,7 +8015,7 @@ QTableWidget QTableCornerButton::section {
               <string notr="true">background-color:rgb(198, 175, 255);</string>
              </property>
              <property name="currentIndex">
-              <number>1</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="tab_14">
               <attribute name="title">
@@ -8277,6 +8342,29 @@ QTableWidget QTableCornerButton::section {
                   </widget>
                  </item>
                 </layout>
+               </widget>
+               <widget class="QPushButton" name="google4">
+                <property name="geometry">
+                 <rect>
+                  <x>100</x>
+                  <y>550</y>
+                  <width>147</width>
+                  <height>29</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color:rgb(255, 213, 248);
+     border-style: outset;
+     border-width: 2px;
+     border-radius: 10px;
+     border-color: beige;
+     font: bold 14px;
+     min-width: 5em;
+     padding: 4px;</string>
+                </property>
+                <property name="text">
+                 <string>google</string>
+                </property>
                </widget>
               </widget>
              </widget>
@@ -8642,13 +8730,15 @@ QTableWidget QTableCornerButton::section {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1271</width>
+     <width>1311</width>
      <height>26</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="ressource.qrc"/>
+ </resources>
  <connections/>
 </ui>

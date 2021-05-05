@@ -17,6 +17,9 @@
 #include"statis2.h"
 #include"stat.h"
 
+#include <QTimer>
+
+
 #include <QMainWindow>
 #include <QtMultimedia/QSound>
 
@@ -127,7 +130,7 @@ private slots:
  void on_jouer_clicked();
 
 
-
+void myfunction();
 
 //maryem
  void on_pushButton_quitter_clicked();
@@ -160,7 +163,7 @@ private slots:
 
  void on_pushButton_16_windowIconTextChanged(const QString &iconText);
 
-void on_lineEdit_textChanged(const QString &arg1);
+//void on_lineEdit_textChanged(const QString &arg1);
 
 
  void on_pushButton_18_clicked();
@@ -359,6 +362,19 @@ void on_configuration_clicked();
 
 void on_chat_clicked();
 
+void on_sendBtn_clicked();
+
+void on_google1_clicked();
+
+void on_google2_clicked();
+
+void on_google3_clicked();
+
+void on_google4_clicked();
+
+void on_google5_clicked();
+
+
 private:
     Ui::MainWindow *ui;
     personnel tmppersonnel;
@@ -406,5 +422,6 @@ private:
     QMediaPlayer *mMediaPlayer;
     QSound *son;
     QMediaPlayer musicAdd;
+    QTimer *timer;
 };
 #endif // MAINWINDOW_H

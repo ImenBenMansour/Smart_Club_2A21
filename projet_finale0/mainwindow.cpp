@@ -16,6 +16,8 @@
 #include <QSqlTableModel>
 #include <QApplication>
 #include<QPixmap>
+#include<QDateTime>
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -23,12 +25,18 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    timer =new QTimer(this);
+    connect(timer, SIGNAL(timeout()),this,SLOT(myfunction()));
+    timer->start(1000);
     this->setStyleSheet("background-color: transparent;");
 
-    QPixmap pix("C:/Users/LENOVO/Desktop/Imageeee/chats.jfif");
-    //int w=ui->label_pic->width();
-   // int h=ui->label_pic->height();
-   // ui->label_pic->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
+    QPixmap pix("C:/projet_finale0/Images/background.jfif");
+   int w=ui->label_pic->width()*0.7;
+    int h=ui->label_pic->height()*0.7;
+   ui->label_pic->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
+
+
+
 
     sound=new QSound("C:/Users/LENOVO/Desktop/boutheina lagrem/projet-test/music.wav");//lecture sound
 
@@ -64,8 +72,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEdit_reference->setStyleSheet("QLineEdit { color: red;}");
 
     //windows size
-   initial_width=this->width()*0.95;
-    initial_height=this->height();
+   initial_width=this->width()*0.98;
+    initial_height=this->height()*0.95;
 
    login_width=this->width()*0.8;
     login_height=this->height()*0.7;
@@ -228,6 +236,17 @@ void MainWindow::on_pushButton_7_clicked()
     if(tmppersonnel.supprimer(cin))
     {
         ui->tableView_3->setModel(tmppersonnel.afficher());
+        QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                     notifyIcon->show();
+                                     notifyIcon->setIcon(QIcon("icone.png"));
+
+                                     notifyIcon->showMessage("GESTION Personnel   ","Personnel supprimé",QSystemTrayIcon::Information,15000);
+                     QMessageBox::information(nullptr, QObject::tr("OK"),
+                                 QObject::tr("Ajout effectué.\n"
+                                             "Click Cancel to exit."), QMessageBox::Cancel);
+    QMessageBox::information(nullptr, QObject::tr("supprimé personnel"),
+                              QObject::tr("Personnel supprimé.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
         QMessageBox::information(nullptr, QObject::tr("supression"),
                                   QObject::tr("Personnel supprimé\n"
                                               "Click Cancel to exit."), QMessageBox::Cancel);
@@ -258,6 +277,17 @@ void MainWindow::on_pushButton_11_clicked()
 
         {
              ui->tableView_3->setModel(tmppersonnel.afficher());
+             QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                          notifyIcon->show();
+                                          notifyIcon->setIcon(QIcon("icone.png"));
+
+                                          notifyIcon->showMessage("GESTION Personnel   ","Personnel modifié",QSystemTrayIcon::Information,15000);
+                          QMessageBox::information(nullptr, QObject::tr("OK"),
+                                      QObject::tr("Ajout effectué.\n"
+                                                  "Click Cancel to exit."), QMessageBox::Cancel);
+         QMessageBox::information(nullptr, QObject::tr("modifié personnel"),
+                                   QObject::tr("Personnel modifié.\n"
+                                               "Click Cancel to exit."), QMessageBox::Cancel);
             QMessageBox::information(nullptr, QObject::tr("update "),
                         QObject::tr("Personnel modifié\n"
         "Click Cancel to exit."), QMessageBox::Cancel);}
@@ -293,6 +323,17 @@ void MainWindow::on_ajouter2_clicked()
         if(test)
 
       {ui->tableViewD->setModel(tmprole.afficher());
+            QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                         notifyIcon->show();
+                                         notifyIcon->setIcon(QIcon("icone.png"));
+
+                                         notifyIcon->showMessage("GESTION Role   ","Role Ajouté",QSystemTrayIcon::Information,15000);
+                         QMessageBox::information(nullptr, QObject::tr("OK"),
+                                     QObject::tr("Ajout effectué.\n"
+                                                 "Click Cancel to exit."), QMessageBox::Cancel);
+        QMessageBox::information(nullptr, QObject::tr("ajout role"),
+                                  QObject::tr("Role ajouté.\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
         QMessageBox::information(nullptr, QObject::tr("ajout rôle"),
                                   QObject::tr("rôle ajouté.\n"
                                               "Click Cancel to exit."), QMessageBox::Cancel);
@@ -320,6 +361,17 @@ void MainWindow::on_supprimer_role_clicked()
             role d(nom,reference,nb_employes);
             if(test)
             {             ui->tableViewD->setModel(tmprole.afficher());
+                QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                             notifyIcon->show();
+                                             notifyIcon->setIcon(QIcon("icone.png"));
+
+                                             notifyIcon->showMessage("GESTION Role   ","Role Supprimé",QSystemTrayIcon::Information,15000);
+                             QMessageBox::information(nullptr, QObject::tr("OK"),
+                                         QObject::tr("Suppression effectué.\n"
+                                                     "Click Cancel to exit."), QMessageBox::Cancel);
+            QMessageBox::information(nullptr, QObject::tr("supprimé role"),
+                                      QObject::tr("Role supprimé.\n"
+                                                  "Click Cancel to exit."), QMessageBox::Cancel);
 
                 QMessageBox::information(nullptr, QObject::tr("supprimer rôle"),
                                       QObject::tr("supp ressuie.\n"
@@ -354,6 +406,17 @@ void MainWindow::on_modifier_role_clicked()
 
             {
                  ui->tableViewD->setModel(tmprole.afficher());
+                 QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                              notifyIcon->show();
+                                              notifyIcon->setIcon(QIcon("icone.png"));
+
+                                              notifyIcon->showMessage("GESTION Role   ","Role modifié",QSystemTrayIcon::Information,15000);
+                              QMessageBox::information(nullptr, QObject::tr("OK"),
+                                          QObject::tr("modification effectué.\n"
+                                                      "Click Cancel to exit."), QMessageBox::Cancel);
+             QMessageBox::information(nullptr, QObject::tr("role modifié"),
+                                       QObject::tr("role modifié.\n"
+                                                   "Click Cancel to exit."), QMessageBox::Cancel);
                 QMessageBox::information(nullptr, QObject::tr("update "),
                             QObject::tr("rôle modifié\n"
             "Click Cancel to exit."), QMessageBox::Cancel);}
@@ -607,6 +670,17 @@ void MainWindow::on_pushButton_quitter_clicked()
 {
         e.ajouter();
         ui->tableView_4->setModel(tmpevenements.afficher());
+        QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                     notifyIcon->show();
+                                     notifyIcon->setIcon(QIcon("icone.png"));
+
+                                     notifyIcon->showMessage("GESTION Evenement   ","Evenement Ajouté",QSystemTrayIcon::Information,15000);
+                     QMessageBox::information(nullptr, QObject::tr("OK"),
+                                 QObject::tr("Ajout effectué.\n"
+                                             "Click Cancel to exit."), QMessageBox::Cancel);
+    QMessageBox::information(nullptr, QObject::tr("ajout evenement"),
+                              QObject::tr("evenement ajouté.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
 
         QMessageBox::information(nullptr, QObject::tr("ajout evenement"),
                               QObject::tr("ajout ressuie.\n"
@@ -643,11 +717,23 @@ void MainWindow::on_pushButton_modif_clicked()
 
             {
                  ui->tableView_4->setModel(tmpevenements.afficher());
+                 QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                              notifyIcon->show();
+                                              notifyIcon->setIcon(QIcon("icone.png"));
+
+                                              notifyIcon->showMessage("GESTION Evenement   ","Evenement modifié",QSystemTrayIcon::Information,15000);
+                              QMessageBox::information(nullptr, QObject::tr("OK"),
+                                          QObject::tr("modification effectué.\n"
+                                                      "Click Cancel to exit."), QMessageBox::Cancel);
+             QMessageBox::information(nullptr, QObject::tr("modifié evenement"),
+                                       QObject::tr("evenement modifié.\n"
+                                                   "Click Cancel to exit."), QMessageBox::Cancel);
+
                 QMessageBox::information(nullptr, QObject::tr("update "),
                             QObject::tr("evenement modifie\n"
             "Click Cancel to exit."), QMessageBox::Cancel);}
             else
-              {  QMessageBox::information(nullptr, QObject::tr("modifier participant"),
+              {  QMessageBox::information(nullptr, QObject::tr("modifier evenement"),
                             QObject::tr("modifier echouèe.\n"
                                       "Click Cancel to exit."), QMessageBox::Cancel);}
 }
@@ -668,6 +754,18 @@ void MainWindow::on_pushButton_17_clicked()
 
     if(test)
     {             ui->tableView_6->setModel(tmpparticpant.afficher());
+        QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                     notifyIcon->show();
+                                     notifyIcon->setIcon(QIcon("icone.png"));
+
+                                     notifyIcon->showMessage("GESTION Sponsor   ","sponsor supprimé",QSystemTrayIcon::Information,15000);
+                     QMessageBox::information(nullptr, QObject::tr("OK"),
+                                 QObject::tr("suppression effectué.\n"
+                                             "Click Cancel to exit."), QMessageBox::Cancel);
+    QMessageBox::information(nullptr, QObject::tr("supprimé sponsor"),
+                              QObject::tr("sponsor supprimé.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
+
 
         QMessageBox::information(nullptr, QObject::tr("supprimer sponsor"),
                               QObject::tr("supp ressuie.\n"
@@ -739,6 +837,17 @@ void MainWindow::on_pushButton_19_clicked()
         bool test=p.ajouter();
         if(test)
         {ui->tableView_6->setModel(tmpparticpant.afficher());
+            QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                         notifyIcon->show();
+                                         notifyIcon->setIcon(QIcon("icone.png"));
+
+                                         notifyIcon->showMessage("GESTION Sponsor   ","sponsor ajouté",QSystemTrayIcon::Information,15000);
+                         QMessageBox::information(nullptr, QObject::tr("OK"),
+                                     QObject::tr("ajout effectué.\n"
+                                                 "Click Cancel to exit."), QMessageBox::Cancel);
+        QMessageBox::information(nullptr, QObject::tr("ajout sponsor"),
+                                  QObject::tr("sponsor ajouté.\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
             QMessageBox::information(nullptr, QObject::tr("ajout sponsor"),
                                   QObject::tr("ajout reussi.\n"
                                               "Click Cancel to exit."), QMessageBox::Cancel);
@@ -775,6 +884,17 @@ void MainWindow::on_pushButton_18_clicked()
 
             {
                  ui->tableView_6->setModel(tmpparticpant.afficher());
+                 QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                              notifyIcon->show();
+                                              notifyIcon->setIcon(QIcon("icone.png"));
+
+                                              notifyIcon->showMessage("GESTION Sponsor   ","sponsor modifié",QSystemTrayIcon::Information,15000);
+                              QMessageBox::information(nullptr, QObject::tr("OK"),
+                                          QObject::tr("modification effectué.\n"
+                                                      "Click Cancel to exit."), QMessageBox::Cancel);
+             QMessageBox::information(nullptr, QObject::tr("modifié sponsor"),
+                                       QObject::tr("sponsor modifié.\n"
+                                                   "Click Cancel to exit."), QMessageBox::Cancel);
                 QMessageBox::information(nullptr, QObject::tr("update "),
                             QObject::tr("sponsor modifie\n"
             "Click Cancel to exit."), QMessageBox::Cancel);}
@@ -1034,6 +1154,17 @@ void MainWindow::on_pushButton_13_clicked()
 
         if(test)
         {     ui->tableView_4->setModel(tmpevenements.afficher());
+            QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                         notifyIcon->show();
+                                         notifyIcon->setIcon(QIcon("icone.png"));
+
+                                         notifyIcon->showMessage("GESTION Evenement   ","evenement supprimé",QSystemTrayIcon::Information,15000);
+                         QMessageBox::information(nullptr, QObject::tr("OK"),
+                                     QObject::tr("suppression effectué.\n"
+                                                 "Click Cancel to exit."), QMessageBox::Cancel);
+        QMessageBox::information(nullptr, QObject::tr("supprimé evenement"),
+                                  QObject::tr("evenement supprimé.\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
 
             QMessageBox::information(nullptr, QObject::tr("supprimer evenement"),
                                   QObject::tr("supp ressuie.\n"
@@ -1080,6 +1211,17 @@ void MainWindow::on_ajouter_fournisseur_clicked()
                                  QObject::tr("Ajout effectué.\n"
                                              "Click Cancel to exit."), QMessageBox::Cancel);
         ui->tv_fournisseur->setModel(f.afficher());
+        QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                     notifyIcon->show();
+                                     notifyIcon->setIcon(QIcon("icone.png"));
+
+                                     notifyIcon->showMessage("GESTION Fournisseur   ","fournisseur ajouté",QSystemTrayIcon::Information,15000);
+                     QMessageBox::information(nullptr, QObject::tr("OK"),
+                                 QObject::tr("ajout effectué.\n"
+                                             "Click Cancel to exit."), QMessageBox::Cancel);
+    QMessageBox::information(nullptr, QObject::tr("ajouté fournisseur"),
+                              QObject::tr("fournisseur ajouté\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
 
      }
     else
@@ -1106,6 +1248,17 @@ void MainWindow::on_pushButton_29_clicked()
 
     {
          ui->tv_fournisseur->setModel(f.afficher());
+         QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                      notifyIcon->show();
+                                      notifyIcon->setIcon(QIcon("icone.png"));
+
+                                      notifyIcon->showMessage("GESTION Fournisseur   ","fournisseur modifié",QSystemTrayIcon::Information,15000);
+                      QMessageBox::information(nullptr, QObject::tr("OK"),
+                                  QObject::tr("modification effectué.\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
+     QMessageBox::information(nullptr, QObject::tr("modifié fournisseur"),
+                               QObject::tr("fournisseur modifié\n"
+                                           "Click Cancel to exit."), QMessageBox::Cancel);
         QMessageBox::information(nullptr, QObject::tr("update "),
                     QObject::tr("fournisseur modifie\n"
     "Click Cancel to exit."), QMessageBox::Cancel);}
@@ -1123,6 +1276,17 @@ void MainWindow::on_pushButton_27_clicked()
 
      if(test)
      {             ui->tv_fournisseur->setModel(f.afficher());
+         QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                      notifyIcon->show();
+                                      notifyIcon->setIcon(QIcon("icone.png"));
+
+                                      notifyIcon->showMessage("GESTION Fournisseur   ","fournisseur supprimé",QSystemTrayIcon::Information,15000);
+                      QMessageBox::information(nullptr, QObject::tr("OK"),
+                                  QObject::tr("suppression effectué.\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
+     QMessageBox::information(nullptr, QObject::tr("supprimé fournisseur"),
+                               QObject::tr("fournisseur supprimé\n"
+                                           "Click Cancel to exit."), QMessageBox::Cancel);
 
          QMessageBox::information(nullptr, QObject::tr("supprimer fournisseur"),
                                QObject::tr("suppression ressuie.\n"
@@ -1210,6 +1374,17 @@ void MainWindow::on_pb_ajouter_eq_clicked()
                                  QObject::tr("Ajout effectué.\n"
                                              "Click Cancel to exit."), QMessageBox::Cancel);
         ui->tv_equipement->setModel(E.afficher());
+        QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                     notifyIcon->show();
+                                     notifyIcon->setIcon(QIcon("icone.png"));
+
+                                     notifyIcon->showMessage("GESTION Equipement   ","equipement ajouté",QSystemTrayIcon::Information,15000);
+                     QMessageBox::information(nullptr, QObject::tr("OK"),
+                                 QObject::tr("ajout effectué.\n"
+                                             "Click Cancel to exit."), QMessageBox::Cancel);
+    QMessageBox::information(nullptr, QObject::tr("ajouté equipement"),
+                              QObject::tr("equipement ajouté\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
      }
     else
         QMessageBox::critical(nullptr, QObject::tr("Not OK"),
@@ -1243,6 +1418,17 @@ void MainWindow::on_pushButton_21_clicked()
 
   {
        ui->tv_equipement->setModel(E.afficher());
+       QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                    notifyIcon->show();
+                                    notifyIcon->setIcon(QIcon("icone.png"));
+
+                                    notifyIcon->showMessage("GESTION Equipement   ","equipement modifié",QSystemTrayIcon::Information,15000);
+                    QMessageBox::information(nullptr, QObject::tr("OK"),
+                                QObject::tr("modification effectué.\n"
+                                            "Click Cancel to exit."), QMessageBox::Cancel);
+   QMessageBox::information(nullptr, QObject::tr("modifié equipement"),
+                             QObject::tr("equipement modifié\n"
+                                         "Click Cancel to exit."), QMessageBox::Cancel);
       QMessageBox::information(nullptr, QObject::tr("update "),
                   QObject::tr("equipement modifie\n"
   "Click Cancel to exit."), QMessageBox::Cancel);}
@@ -1293,6 +1479,18 @@ void MainWindow::on_pb_supp_eq_clicked()
 
     if(test)
     {             ui->tv_equipement->setModel(E.afficher());
+
+        QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                     notifyIcon->show();
+                                     notifyIcon->setIcon(QIcon("icone.png"));
+
+                                     notifyIcon->showMessage("GESTION Equipement   ","equipement supprimé",QSystemTrayIcon::Information,15000);
+                     QMessageBox::information(nullptr, QObject::tr("OK"),
+                                 QObject::tr("suppression effectué.\n"
+                                             "Click Cancel to exit."), QMessageBox::Cancel);
+    QMessageBox::information(nullptr, QObject::tr("supprimé equipement"),
+                              QObject::tr("equipement supprimé\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
 
         QMessageBox::information(nullptr, QObject::tr("supprimer equipement"),
                               QObject::tr("suppression ressuie.\n"
@@ -1500,6 +1698,17 @@ void MainWindow::on_pb_ajouter_clicked()
                        QObject::tr("Animal ajouté:\n"
             "click cancel to exit"),QMessageBox::Cancel);
  ui->tab_animal->setModel(A.afficher());
+ QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                              notifyIcon->show();
+                              notifyIcon->setIcon(QIcon("icone.png"));
+
+                              notifyIcon->showMessage("GESTION Animal   ","animal ajouté",QSystemTrayIcon::Information,15000);
+              QMessageBox::information(nullptr, QObject::tr("OK"),
+                          QObject::tr("ajout effectué.\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+QMessageBox::information(nullptr, QObject::tr("ajouté animal"),
+                       QObject::tr("animal ajouté\n"
+                                   "Click Cancel to exit."), QMessageBox::Cancel);
 
     }
     else{QMessageBox::information(nullptr, QObject::tr("chec d'ajout"),
@@ -1528,6 +1737,17 @@ void MainWindow::on_pb_modifier_clicked()
 
             {
                  ui->tab_animal->setModel(A.afficher());
+                 QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                              notifyIcon->show();
+                                              notifyIcon->setIcon(QIcon("icone.png"));
+
+                                              notifyIcon->showMessage("GESTION Animal   ","animal modifié",QSystemTrayIcon::Information,15000);
+                              QMessageBox::information(nullptr, QObject::tr("OK"),
+                                          QObject::tr("modification effectué.\n"
+                                                      "Click Cancel to exit."), QMessageBox::Cancel);
+                QMessageBox::information(nullptr, QObject::tr("modifié animal"),
+                                       QObject::tr("animal modifié\n"
+                                                   "Click Cancel to exit."), QMessageBox::Cancel);
                 QMessageBox::information(nullptr, QObject::tr("update "),
                             QObject::tr("Animal modifie\n"
             "Click Cancel to exit."), QMessageBox::Cancel);}
@@ -1562,6 +1782,17 @@ void MainWindow::on_pb_supprimer_clicked()
                                        QObject::tr("sup successful.\n"
                                                    "Click Cancel to exit."), QMessageBox::Cancel);
     ui->tab_animal->setModel(A1.afficher());
+    QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                 notifyIcon->show();
+                                 notifyIcon->setIcon(QIcon("icone.png"));
+
+                                 notifyIcon->showMessage("GESTION Animal   ","animal supprimé",QSystemTrayIcon::Information,15000);
+                 QMessageBox::information(nullptr, QObject::tr("OK"),
+                             QObject::tr("suppression effectué.\n"
+                                         "Click Cancel to exit."), QMessageBox::Cancel);
+   QMessageBox::information(nullptr, QObject::tr("supprimé animal"),
+                          QObject::tr("animal supprimé\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
                    }
                        else
                            QMessageBox::critical(nullptr, QObject::tr("Echec de Suppression "),
@@ -1771,6 +2002,17 @@ void MainWindow::on_pb_ajouter_2_clicked()
                        QObject::tr("Nourriture ajouté:\n"
             "click cancel to exit"),QMessageBox::Cancel);
     ui->tab_nourriture->setModel(N_temp.afficher());
+    QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                 notifyIcon->show();
+                                 notifyIcon->setIcon(QIcon("icone.png"));
+
+                                 notifyIcon->showMessage("GESTION Nourriture   ","nourriture ajouté",QSystemTrayIcon::Information,15000);
+                 QMessageBox::information(nullptr, QObject::tr("OK"),
+                             QObject::tr("ajout effectué.\n"
+                                         "Click Cancel to exit."), QMessageBox::Cancel);
+   QMessageBox::information(nullptr, QObject::tr("ajouté nourriture"),
+                          QObject::tr("nourriture ajouté\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
 
     }
     else{QMessageBox::information(nullptr, QObject::tr("chec d'ajout"),
@@ -1795,6 +2037,17 @@ void MainWindow::on_pb_modifier_2_clicked()
 
              {
                   ui->tab_nourriture->setModel(N_temp.afficher());
+                  QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                               notifyIcon->show();
+                                               notifyIcon->setIcon(QIcon("icone.png"));
+
+                                               notifyIcon->showMessage("GESTION Nourriture   ","nourriture modifié",QSystemTrayIcon::Information,15000);
+                               QMessageBox::information(nullptr, QObject::tr("OK"),
+                                           QObject::tr("modification effectué.\n"
+                                                       "Click Cancel to exit."), QMessageBox::Cancel);
+                 QMessageBox::information(nullptr, QObject::tr("modifié nourriture"),
+                                        QObject::tr("nourriture modifié\n"
+                                                    "Click Cancel to exit."), QMessageBox::Cancel);
                  QMessageBox::information(nullptr, QObject::tr("update "),
                              QObject::tr("Nourriture modifie\n"
              "Click Cancel to exit."), QMessageBox::Cancel);}
@@ -1824,7 +2077,20 @@ void MainWindow::on_pb_supprimer_2_clicked()
         QMessageBox msgBox;
         if(test)
            { msgBox.setText("Suppression avec succes.");
-            ui->tab_nourriture->setModel(N1.afficher());}
+            ui->tab_nourriture->setModel(N1.afficher());
+            QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                         notifyIcon->show();
+                                         notifyIcon->setIcon(QIcon("icone.png"));
+
+                                         notifyIcon->showMessage("GESTION Nourriture   ","nourriture supprimé",QSystemTrayIcon::Information,15000);
+                         QMessageBox::information(nullptr, QObject::tr("OK"),
+                                     QObject::tr("suppression effectué.\n"
+                                                 "Click Cancel to exit."), QMessageBox::Cancel);
+           QMessageBox::information(nullptr, QObject::tr("supprimé nourriture"),
+                                  QObject::tr("nourriture supprimé\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
+        }
+
         else
             msgBox.setText("Echec de suppression");
             msgBox.exec();
@@ -2682,14 +2948,17 @@ void MainWindow::on_chat_clicked()
     //qDebug()<< "Chat is running on " << QThread::currentThread();
 
     chat_window->exec();
-
-
-
     //    QFuture<bool> future= QtConcurrent::run(this,&MainWindow::launch_chat,chat_window);
 
     //    qDebug() << "Min thread free ...";
     //    qDebug() << "Result: " << future.result();
 
+}
+void MainWindow::myfunction()
+{
+    QTime time = QTime::currentTime();
+QString time_text = time.toString("hh : mm : ss");
+ui->label_date_time->setText(time_text);
 }
 /*bool MainWindow::launch_chat(chat &chat_window)
 {
@@ -2700,4 +2969,53 @@ void MainWindow::on_chat_clicked()
 
     return chat_window.exec();
 }*/
+
+
+
+void MainWindow::on_sendBtn_clicked()
+{
+    Smtp* smtp = new Smtp("cynda.zgr@gmail.com",ui->mail_pass->text(), "smtp.gmail.com");
+    connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+
+    //if( !files.isEmpty() )
+        //smtp->sendMail("cynda.zagrouba@esprit.tn", ui->rcpt->text(), ui->subject->text(),ui->msg->toPlainText(), files );
+   // else
+        smtp->sendMail("cynda.zgr@gmail.com", ui->rcpt->text(), ui->subject->text(),ui->msg->toPlainText());
+}
+
+void MainWindow::on_google1_clicked()
+{
+    QString link="http://www.google.com";
+
+    QDesktopServices::openUrl(QUrl(link));
+}
+
+void MainWindow::on_google2_clicked()
+{
+    QString link="http://www.google.com";
+
+    QDesktopServices::openUrl(QUrl(link));
+}
+
+void MainWindow::on_google3_clicked()
+{
+    QString link="http://www.google.com";
+
+    QDesktopServices::openUrl(QUrl(link));
+}
+
+void MainWindow::on_google4_clicked()
+{
+    QString link="http://www.google.com";
+
+    QDesktopServices::openUrl(QUrl(link));
+}
+
+void MainWindow::on_google5_clicked()
+{
+    QString link="http://www.google.com";
+
+    QDesktopServices::openUrl(QUrl(link));
+}
+
 
